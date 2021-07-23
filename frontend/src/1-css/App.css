@@ -8,5 +8,5 @@
 .page {
   flex: auto;
   width: 100vw;
-  padding: 5.5rem 0;
+  padding: 5.5rem 0 2rem 0;
 }

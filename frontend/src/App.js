@@ -7,6 +7,7 @@ import Nav from "./3-components/Nav";
 const About = lazy(() => import("./2-pages/About"));
 const Missions = lazy(() => import("./2-pages/Missions"));
 const Realisations = lazy(() => import("./2-pages/Realisations"));
+const Contact = lazy(() => import("./2-pages/Contact"));
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" exact render={() => <About />} />
             <Route path="/missions" render={() => <Missions />} />
             <Route path="/mes-realisations" render={() => <Realisations />} />
+            <Route path="/contact" render={() => <Contact />} />
           </Switch>
         </Suspense>
       </div>

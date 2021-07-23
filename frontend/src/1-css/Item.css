@@ -22,7 +22,7 @@
   text-align: center;
 }
 .item .text-container h1:nth-child(1) {
-  font-weight: 500;
+  font-weight: 400;
   text-transform: uppercase;
 }
 .item .text-container h1:nth-child(2) {
