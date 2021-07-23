@@ -1,0 +1,12 @@
+.App {
+  height: auto;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+}
+
+.page {
+  flex: auto;
+  width: 100vw;
+  padding: 5.5rem 0;
+}

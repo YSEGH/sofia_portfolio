@@ -1,0 +1,42 @@
+.item {
+  height: auto;
+  width: 25vw;
+  margin: 2rem;
+}
+.item .photo-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+.item .photo-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+.item .text-container {
+  margin-top: 0.5rem;
+}
+.item .text-container h1 {
+  font-size: 18px;
+  text-align: center;
+}
+.item .text-container h1:nth-child(1) {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.item .text-container h1:nth-child(2) {
+  font-weight: 100;
+}
+@media screen and (max-width: 960px) {
+  .item {
+    margin: 0;
+    margin-bottom: 2rem;
+    width: 40%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .item {
+    width: 100%;
+  }
+}
