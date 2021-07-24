@@ -87,7 +87,7 @@ export default function FilterContainer({ content, props, url }) {
         <button
           className="filters-button" /* onClick={() => displayFilter()} */
         >
-          Filter(s) <MdAdd size={15} />
+          Filtre(s) <MdAdd size={15} />
         </button>
       </div>
       <div className="filter-container-absolute">
@@ -97,7 +97,7 @@ export default function FilterContainer({ content, props, url }) {
           /*           onClick={() => displayFilter()}
            */
         />
-        <h2>Filter(s)</h2>
+        <h2>Filtre(s)</h2>
         <ul>
           {filters.map((filter, i) => (
             <li key={i}>

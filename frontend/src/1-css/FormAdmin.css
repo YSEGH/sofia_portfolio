@@ -1,0 +1,184 @@
+.form-admin {
+  height: auto;
+  width: fit-content;
+  margin: auto;
+  font-family: "Poppins", sans-serif;
+  padding-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.form-admin h2 {
+  font-size: 1.5em !important;
+  margin: 4rem auto 3rem auto;
+  font-weight: 400;
+  text-align: center;
+}
+.form-admin button {
+  height: 3rem;
+  width: 20rem;
+  background-color: #ff0513;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s;
+  font: 400 20px "Poppins";
+  margin: 3rem auto;
+}
+.form-admin form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.form-admin form .form-group {
+  width: 20rem;
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+.form-admin form label {
+  width: 20rem;
+  margin-bottom: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: #707070;
+}
+.form-admin form input,
+.form-admin form select,
+.form-admin form textarea {
+  border: 1px solid rgba(112, 112, 112, 0.2);
+  width: 20rem;
+  height: 3rem;
+  margin-bottom: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  padding: 0.5rem;
+  outline: none;
+  box-sizing: border-box;
+  color: #707070;
+  border-radius: 5px;
+}
+.form-admin form textarea {
+  height: 10rem;
+}
+.form-admin form input::placeholder,
+.form-admin form select::placeholder,
+.form-admin form textarea::placeholder {
+  color: rgb(112, 112, 112, 0.4);
+}
+.form-admin form button:hover {
+  background-color: #d6000b;
+}
+.text-editor {
+  height: fit-content;
+  min-height: 25rem;
+  width: 50rem;
+  max-width: 80vw;
+  border: 1px solid rgba(112, 112, 112, 0.2);
+  padding: 2rem;
+  font-weight: 300;
+  text-align: left;
+  margin: auto;
+  border-radius: 5px;
+  color: #707070;
+}
+
+/* Upload zone */
+.upload-zone-container {
+  width: fit-content;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+.upload-zone-container h2 {
+  width: 100%;
+}
+.upload-zone-container div {
+  width: 15rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: rgba(211, 211, 211, 0.493);
+  overflow-y: scroll;
+}
+.upload-zone-container svg {
+  color: rgba(211, 211, 211, 0.349);
+}
+.upload-zone-container .upload-zone {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+}
+.upload-zone-container .upload-zone p {
+  text-align: center;
+  color: rgb(112, 112, 112, 0.4);
+}
+.upload-zone-container .upload-zone input {
+  width: 100%;
+  position: absolute;
+  top: -5rem;
+}
+.upload-zone-container .upload-zone label {
+  width: 15rem;
+  height: 20rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  background-color: rgba(211, 211, 211, 0.11);
+}
+.upload-zone-container .upload-zone label.active {
+  background-color: rgba(117, 117, 117, 0.11);
+}
+.upload-zone-container .apercu-zone img,
+.upload-zone-container .apercu-zone video {
+  width: 15rem;
+  height: 20rem;
+  object-fit: contain;
+}
+.upload-zone-container .apercu-zone.many-images {
+  flex-direction: row;
+}
+.upload-zone-container .apercu-zone.many-images img,
+.upload-zone-container .apercu-zone.many-images video {
+  width: auto;
+  height: 4rem;
+  object-fit: contain;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 960px) {
+  .upload-zone-container div {
+    margin-bottom: 2rem;
+  }
+}
+@media screen and (max-width: 550px) {
+  .upload-zone-container {
+    justify-content: center;
+  }
+  .form-admin form .form-group {
+    width: 100%;
+  }
+  .form-admin form label {
+    width: 100%;
+  }
+  .form-admin form input,
+  .form-admin form select,
+  .form-admin form textarea {
+    width: 100%;
+  }
+  .form-admin button {
+    width: 100%;
+  }
+}

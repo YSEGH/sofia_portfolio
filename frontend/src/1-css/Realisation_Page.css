@@ -1,0 +1,139 @@
+.realisation-page {
+  padding-top: 10rem;
+  padding-inline: 5rem;
+  display: flex;
+  flex-direction: column;
+}
+/* Text container */
+.realisation-page .text-container {
+  width: 300px;
+  height: fit-content;
+  float: left;
+  margin: auto;
+  margin-bottom: 3rem;
+}
+.realisation-page .text-container h1 {
+  font-weight: 600;
+  font-size: 40px;
+}
+.realisation-page .text-container p {
+  text-align: justify;
+  font-weight: 200;
+}
+.realisation-page .text-container ul {
+  padding: 0;
+}
+.realisation-page .text-container ul li {
+  list-style-type: none;
+  color: #707070 !important;
+}
+.realisation-page .text-container ul li span {
+  font-weight: 200;
+}
+/* Photos container */
+.realisation-page .photos-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.realisation-page .photos-container .photo-container {
+  width: 300px;
+  aspect-ratio: 1/1;
+  margin: 1rem;
+  pointer-events: none;
+}
+.realisation-page .photos-container .photo-container .photo-content {
+  width: 100%;
+  height: 100%;
+  margin: 1rem;
+  position: relative;
+  pointer-events: all;
+  cursor: pointer;
+}
+.realisation-page .photos-container .photo-container .photo-content img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center center;
+  pointer-events: none;
+}
+.realisation-page .photos-container .photo-container .photo-content svg {
+  display: none;
+}
+
+.realisation-page .photos-container .photo-container .photo-content.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  aspect-ratio: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(112, 112, 112, 0.2);
+  cursor: auto;
+  pointer-events: all;
+}
+.realisation-page .photos-container .photo-container .photo-content.active img {
+  height: 90%;
+  width: auto;
+  object-fit: contain;
+  pointer-events: all;
+}
+.realisation-page .photos-container .photo-container .photo-content.active svg {
+  display: block;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: #fff;
+  pointer-events: fill;
+  cursor: pointer;
+  transition: 0.25s;
+}
+.realisation-page
+  .photos-container
+  .photo-container
+  .photo-content.active
+  svg:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 960px) {
+  .realisation-page {
+    padding-inline: 2rem;
+  }
+  .realisation-page .photos-container .photo-container .photo-content {
+    margin: 0;
+  }
+  .realisation-page .photos-container .photo-container .photo-content.active {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  .realisation-page
+    .photos-container
+    .photo-container
+    .photo-content.active
+    img {
+    height: auto;
+    width: 100%;
+  }
+  .realisation-page
+    .photos-container
+    .photo-container
+    .photo-content.active
+    svg {
+    left: auto;
+    right: 1rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .realisation-page {
+    padding-inline: 1rem;
+  }
+  .realisation-page .text-container {
+    width: 100%;
+  }
+}

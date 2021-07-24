@@ -8,6 +8,9 @@ const About = lazy(() => import("./2-pages/About"));
 const Missions = lazy(() => import("./2-pages/Missions"));
 const Realisations = lazy(() => import("./2-pages/Realisations"));
 const Contact = lazy(() => import("./2-pages/Contact"));
+const Realisation_Page = lazy(() => import("./2-pages/Realisation_Page"));
+const Auth = lazy(() => import("./2-pages/Auth"));
+const Admin = lazy(() => import("./2-pages/Admin"));
 
 function App() {
   return (
@@ -18,8 +21,19 @@ function App() {
           <Switch>
             <Route path="/" exact render={() => <About />} />
             <Route path="/missions" render={() => <Missions />} />
-            <Route path="/mes-realisations" render={() => <Realisations />} />
+            <Route
+              path="/mes-realisations"
+              exact
+              render={() => <Realisations />}
+            />
+            <Route
+              path="/mes-realisations/:id"
+              exact
+              render={() => <Realisation_Page />}
+            />
             <Route path="/contact" render={() => <Contact />} />
+            <Route path="/admin" exact render={() => <Auth />} />
+            <Route path="/admin/mon-espace" render={() => <Admin />} />
           </Switch>
         </Suspense>
       </div>

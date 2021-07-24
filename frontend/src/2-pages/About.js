@@ -27,7 +27,9 @@ export default function About() {
         </p>
       </div>
       <div className="photo-container">
-        <div className="background-photo"></div>
+        <div className="background-photo">
+          <img src="/static-files/photo-2.jpg" />
+        </div>
       </div>
     </div>
   );

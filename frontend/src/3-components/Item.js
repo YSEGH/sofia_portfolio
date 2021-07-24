@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../1-css/Item.css";
 
 export default function Item({ item }) {
@@ -8,11 +9,15 @@ export default function Item({ item }) {
 
   return (
     <div className={`item`}>
-      <div className="photo-container">
-        <img src="/static-files/photo.jpg" />
-      </div>
+      <Link to={`/mes-realisations/${1}`}>
+        <div className="photo-container">
+          <img src="/static-files/photo.jpg" />
+        </div>
+      </Link>
       <div className="text-container">
-        <h1>{item.type}</h1>
+        <Link to={`/mes-realisations/${1}`}>
+          <h1>{item.type}</h1>
+        </Link>
         <h1>{item.title}</h1>
       </div>
     </div>

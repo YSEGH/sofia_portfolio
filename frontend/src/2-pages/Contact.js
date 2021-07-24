@@ -5,7 +5,6 @@ export default function Contact() {
   return (
     <div className="page contact">
       <div className="text-container">
-        <div className="background-color"></div>
         <div className="background-text">
           <div className="infos-details">
             <p>SEGHROUCHNI Sofia</p>

@@ -1,0 +1,12 @@
+.missions {
+  padding-top: 10rem;
+  padding-inline: 5rem;
+}
+
+.missions h1 {
+  font-size: 40px;
+  font-weight: 600;
+}
+.missions h1 span {
+  font-weight: 200;
+}

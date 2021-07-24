@@ -3,6 +3,12 @@
   width: 25vw;
   margin: 2rem;
 }
+.item a {
+  display: block;
+  text-decoration: none;
+  width: fit-content;
+  margin: auto;
+}
 .item .photo-container {
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -13,17 +19,26 @@
   width: 100%;
   object-fit: cover;
   object-position: center center;
+  transition: 0.25s;
+}
+.item .photo-container img:hover {
+  transform: scale(1.01);
 }
 .item .text-container {
   margin-top: 0.5rem;
 }
 .item .text-container h1 {
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
+  margin: 0;
 }
 .item .text-container h1:nth-child(1) {
-  font-weight: 400;
+  font-weight: 600;
   text-transform: uppercase;
+  transition: 0.25s;
+}
+.item .text-container h1:nth-child(1):hover {
+  transform: scale(1.05);
 }
 .item .text-container h1:nth-child(2) {
   font-weight: 100;

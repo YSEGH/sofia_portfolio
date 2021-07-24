@@ -51,9 +51,14 @@ export default function Nav() {
             Contact
           </NavLink>
         </li>
+        <li>
+          <NavLink activeClassName="active" to="/admin/mon-espace">
+            Admin
+          </NavLink>
+        </li>
         {localStorage.getItem("token") ? (
           <li>
-            <NavLink activeClassName="active" to="/admin/mon-compte">
+            <NavLink activeClassName="active" to="/admin/mon-espace">
               Admin
             </NavLink>
           </li>

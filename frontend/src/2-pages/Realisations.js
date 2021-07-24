@@ -6,11 +6,11 @@ import Item from "../3-components/Item";
 export default function Realisations() {
   const items = [
     { title: "Title", type: "Aménagement" },
+    { title: "Title", type: "Restaurant" },
+    { title: "Title", type: "Réhabilitation" },
+    { title: "Title", type: "Construction" },
     { title: "Title", type: "Aménagement" },
-    { title: "Title", type: "Aménagement" },
-    { title: "Title", type: "Aménagement" },
-    { title: "Title", type: "Aménagement" },
-    { title: "Title", type: "Aménagement" },
+    { title: "Title", type: "Consultation" },
   ];
 
   return (
