@@ -21,6 +21,12 @@ h1 {
 ul {
   padding: 0;
 }
+
+/* Text editor JS */
+.codex-editor__redactor {
+  padding-bottom: 0 !important;
+}
+
 @media screen and (max-width: 1050px) {
   .page {
     width: 100vw;

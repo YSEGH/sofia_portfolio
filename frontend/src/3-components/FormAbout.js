@@ -1,24 +1,31 @@
 import React, { useEffect, useRef, useState } from "react";
-/* import { useDispatch, useSelector } from "react-redux";
- */ import EditorJs from "react-editor-js";
+import { useDispatch, useSelector } from "react-redux";
+import EditorJs from "react-editor-js";
 import "../1-css/FormAdmin.css";
 import { useForm } from "react-hook-form";
 import uniqId from "uniqid";
 import { BiImport } from "react-icons/bi";
 import { FaPortrait } from "react-icons/fa";
 import { EDITOR_JS_TOOLS } from "../constants";
-/* import {
+import {
   getInfosHandler,
   resetInfos,
   updateInfosHandler,
-} from "../../3-actions/infoActions"; */
+} from "../5-actions/infoActions";
 import { LoadingSVG } from "./LoadingComponents";
 import { toast } from "react-toastify";
 
-export default function FormAbout({ infos = { lastname: "", firstname: "" } }) {
+export default function FormAbout() {
   const instanceRef = useRef(null);
+  const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm();
 
-  /*  const dispatch = useDispatch();
   const updateInfos = useSelector((state) => state.updateInfos);
   const {
     loading: loadingUpdate,
@@ -28,16 +35,8 @@ export default function FormAbout({ infos = { lastname: "", firstname: "" } }) {
 
   const getInfos = useSelector((state) => state.getInfos);
   const { loading: loadingGet, infos, error: errorGet } = getInfos;
-*/
-  const [file, setFile] = useState(null);
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    setValue,
-    formState: { errors },
-  } = useForm();
+  const [file, setFile] = useState(null);
 
   const importFile = (fileImport) => {
     const newFile = fileImport;
@@ -59,7 +58,7 @@ export default function FormAbout({ infos = { lastname: "", firstname: "" } }) {
 
   const onSubmit = async (dataForm) => {
     console.log(dataForm);
-    /* const savedData = await instanceRef.current.save();
+    const savedData = await instanceRef.current.save();
     const infosUpdated = {
       lastname: dataForm.lastname ? dataForm.lastname : infos.lastname,
       firstname: dataForm.firstname ? dataForm.firstname : infos.firstname,
@@ -74,24 +73,30 @@ export default function FormAbout({ infos = { lastname: "", firstname: "" } }) {
     };
     const formData = new FormData();
     formData.append("infos", JSON.stringify(infosUpdated));
-    formData.append("image", file);
-    dispatch(updateInfosHandler(formData)); */
+    if (file) {
+      formData.append("image", file);
+    }
+    dispatch(updateInfosHandler(formData));
   };
 
-  /*  useEffect(() => {
-    if (Object.keys(infos).length === 0) {
-      dispatch(getInfosHandler());
-    }
+  useEffect(() => {
+    dispatch(getInfosHandler());
+    return () => {};
+  }, []);
+
+  useEffect(() => {
     if (successUpdate) {
       toast.success("Modifications enregistrées !");
+      setFile(null);
+      dispatch(getInfosHandler());
       dispatch(resetInfos());
     }
     if (errorUpdate) {
       toast.error("Impossible d'enregistrer les modifications !");
       dispatch(resetInfos());
     }
-    return () => {}; 
-  }, [successUpdate, errorUpdate]);*/
+    return () => {};
+  }, [successUpdate, errorUpdate]);
 
   return (
     <div className="form-admin">
@@ -170,11 +175,9 @@ export default function FormAbout({ infos = { lastname: "", firstname: "" } }) {
         <h2>Modifiez l'image de présentation (A propos)</h2>
         <div className="apercu-zone one-image">
           {file ? (
-            infos.aboutPhoto ? (
-              <img src={infos.aboutPhoto} />
-            ) : (
-              <img src={file.preview} />
-            )
+            <img src={file.preview} />
+          ) : infos.aboutPhoto ? (
+            <img src={infos.aboutPhoto} />
           ) : (
             <FaPortrait size={250} />
           )}
@@ -220,28 +223,21 @@ export default function FormAbout({ infos = { lastname: "", firstname: "" } }) {
       <div className="presentation-about">
         <h2>Modifiez le texte de présentation (A propos)</h2>
         <div className="text-editor">
-          {/* {infos.aboutDescription && (
+          {infos.aboutDescription && (
             <EditorJs
               instanceRef={(instance) => (instanceRef.current = instance)}
               tools={EDITOR_JS_TOOLS}
               data={infos.aboutDescription}
             />
-          )} */}
-          <EditorJs
-            instanceRef={(instance) => (instanceRef.current = instance)}
-            tools={EDITOR_JS_TOOLS}
-            data={infos.aboutDescription}
-          />
+          )}
         </div>
       </div>
       <button
         form="form-about"
         type="submit"
-        /*         disabled={loadingUpdate ? true : false}
-         */
+        disabled={loadingUpdate ? true : false}
       >
-        {/*         {loadingUpdate ? <LoadingSVG /> : "Valider les modifications"}
-         */}
+        {loadingUpdate ? <LoadingSVG /> : "Valider les modifications"}
       </button>
     </div>
   );

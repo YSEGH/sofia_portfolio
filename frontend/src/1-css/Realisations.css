@@ -1,4 +1,5 @@
 .realisations {
+  margin-bottom: 2rem;
 }
 .items-container {
   margin-top: 1rem;
@@ -8,11 +9,29 @@
   align-items: center;
   padding: 0 1rem;
 }
+.show-more-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4rem auto;
+}
+.show-more-div button {
+  padding: 1rem;
+  font: 400 18px "Josefin Sans", sans-serif;
+  background-color: transparent;
+  border: 1px solid #303030;
+  cursor: pointer;
+  transition: 0.25s;
+}
+.show-more-div button:hover {
+  background-color: #303030;
+  border: 1px solid #fff;
+  color: #fff;
+}
 
 @media screen and (max-width: 1050px) {
   .items-container {
     margin-top: 0;
-
     justify-content: space-around;
   }
 }

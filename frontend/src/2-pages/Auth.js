@@ -1,17 +1,18 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../1-css/Auth.css";
-/* import { useDispatch, useSelector } from "react-redux";
- */ import { useForm } from "react-hook-form";
-/*import {
+import { useDispatch, useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
+import {
   loginUserHandler,
   registerUserHandler,
   userReset,
-} from "../3-actions/userActions";
-import { toast } from "react-toastify"; */
+} from "../5-actions/userActions";
+import { toast } from "react-toastify";
+import { LoadingSVG } from "../3-components/LoadingComponents";
 
 export default function Auth(props) {
-  /*   const dispatch = useDispatch();
-   */ const {
+  const dispatch = useDispatch();
+  const {
     register,
     handleSubmit,
     reset,
@@ -19,21 +20,12 @@ export default function Auth(props) {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    /* const user = {
-        username: data.username,
-        password: data.password,
-      };
-      dispatch(loginUserHandler(user)); */
+    const user = {
+      username: data.username,
+      password: data.password,
+    };
+    dispatch(loginUserHandler(user));
   };
-
-  /*
-  const registerUser = useSelector((state) => state.registerUser);
-  const {
-    loading: loadingRegister,
-    success: successRegister,
-    error: errorRegister,
-  } = registerUser;
 
   const loginUser = useSelector((state) => state.loginUser);
   const {
@@ -42,21 +34,20 @@ export default function Auth(props) {
     error: errorLogin,
   } = loginUser;
 
-
-
   useEffect(() => {
     if (successLogin) {
       dispatch(userReset());
       toast.success(successLogin.message);
     }
     if (errorLogin) {
-      toast.error("Nom d'utilisateur ou mot de passe incorrect.");
+      toast.error(errorLogin);
     }
     if (localStorage.getItem("token")) {
-      props.history.push("/admin/mon-compte/contenu");
+      props.history.push("/admin/mon-espace/mon-compte");
     }
     return () => {};
-  }, [successLogin, errorLogin]); */
+  }, [successLogin, errorLogin]);
+
   return (
     <form className="page auth" onSubmit={handleSubmit(onSubmit)}>
       <h2>Connexion</h2>
@@ -70,7 +61,9 @@ export default function Auth(props) {
         type="password"
         placeholder="Mot de passe"
       />
-      <button type="submit">Valider</button>
+      <button type="submit" disabled={loadingLogin ? true : false}>
+        {loadingLogin ? <LoadingSVG /> : "Valider"}
+      </button>
     </form>
   );
 }

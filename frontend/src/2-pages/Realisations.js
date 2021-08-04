@@ -26,6 +26,9 @@ export default function Realisations() {
           <Item item={item} key={i} />
         ))}
       </div>
+      <div className="show-more-div">
+        <button className="show-more">Afficher plus</button>
+      </div>
     </div>
   );
 }

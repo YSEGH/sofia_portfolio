@@ -1,17 +1,26 @@
 import React, { useEffect } from "react";
 import "../1-css/FormUser.css";
-/* import { useDispatch, useSelector } from "react-redux";
- */ import { useForm } from "react-hook-form";
-/* import {
+import { useDispatch, useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
+import {
   getUserHandler,
   resetPasswordHandler,
   updateUserHandler,
   userReset,
-} from "../../3-actions/userActions";
-import { toast } from "react-toastify"; */
+} from "../5-actions/userActions";
+import { toast } from "react-toastify";
+import { LoadingSVG } from "./LoadingComponents";
 
 export default function FormUser() {
-  /*   const getUser = useSelector((state) => state.getUser);
+  const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const getUser = useSelector((state) => state.getUser);
   const { loading, user, error } = getUser;
 
   const updateUser = useSelector((state) => state.updateUser);
@@ -28,24 +37,14 @@ export default function FormUser() {
     error: errorReset,
   } = passwordReset;
 
-  const dispatch = useDispatch(); */
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
-    /* const userUpdate = {
+    const userUpdate = {
       username: user.username,
       password: data.password,
       newPassword: data.newPassword,
     };
-    dispatch(updateUserHandler(userUpdate)); */
+    dispatch(updateUserHandler(userUpdate));
   };
-  /* 
-  
 
   useEffect(() => {
     dispatch(getUserHandler());
@@ -54,10 +53,12 @@ export default function FormUser() {
 
   useEffect(() => {
     if (successUpdate) {
+      reset({});
       toast.success(successUpdate.message);
       dispatch(userReset());
     }
     if (successReset) {
+      reset({});
       toast.success(successReset.message);
       dispatch(userReset());
     }
@@ -70,7 +71,7 @@ export default function FormUser() {
       dispatch(userReset());
     }
     return () => {};
-  }, [successUpdate, successReset, errorUpdate, errorReset]); */
+  }, [successUpdate, successReset, errorUpdate, errorReset]);
 
   return (
     <form
@@ -80,10 +81,9 @@ export default function FormUser() {
     >
       <h2>Vos informations</h2>
       <input
-        {...register("username")}
         type="text"
-        /*         value={user.username}
-         */ placeholder="Votre nom de compte"
+        defaultValue={user.username}
+        placeholder="Votre nom de compte"
         disabled
       />
       <input
@@ -103,8 +103,7 @@ export default function FormUser() {
       <p
         onClick={(e) => {
           e.preventDefault();
-          /*           dispatch(resetPasswordHandler());
-           */
+          dispatch(resetPasswordHandler());
         }}
       >
         Réinitialiser mon mot de passe.

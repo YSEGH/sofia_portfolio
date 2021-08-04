@@ -1,31 +1,47 @@
 import React, { useEffect, useState } from "react";
-/* import { useDispatch, useSelector } from "react-redux";
- */
+import { useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
 import "../1-css/FormAdmin.css";
 import { useForm } from "react-hook-form";
 import uniqId from "uniqid";
 import { BiImport } from "react-icons/bi";
 import { FaPortrait } from "react-icons/fa";
-/* import {
-  getitemHandler,
-  resetitem,
-  updateitemHandler,
-} from "../../3-actions/infoActions"; */
+import {
+  getItemsHandler,
+  addItemHandler,
+  updateItemHandler,
+  resetItemSuccess,
+  resetGetItem,
+} from "../5-actions/itemActions";
 import { LoadingSVG } from "./LoadingComponents";
 import { toast } from "react-toastify";
 
-export default function FormRealisation({ update = false, item = {} }) {
-  /*  const dispatch = useDispatch();
-  const updateitem = useSelector((state) => state.updateitem);
+export default function FormRealisation({ update = false }) {
+  const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const { itemId } = useParams();
+
+  const addItem = useSelector((state) => state.addItem);
+  const { loading: loadingAdd, success: successAdd, error: errorAdd } = addItem;
+
+  const updateItem = useSelector((state) => state.updateItem);
   const {
     loading: loadingUpdate,
     success: successUpdate,
     error: errorUpdate,
-  } = updateitem;
+  } = updateItem;
 
-  const getitem = useSelector((state) => state.getitem);
-  const { loading: loadingGet, item, error: errorGet } = getitem;
-*/
+  const getItem = useSelector((state) => state.getItem);
+  const { loading: loadingGet, items, error: errorGet } = getItem;
+
+  const [item, setItem] = useState({});
   const [files, setFiles] = useState([]);
   const [categoryName, setCategoryName] = useState("");
   const [categories, setCategories] = useState([]);
@@ -43,14 +59,6 @@ export default function FormRealisation({ update = false, item = {} }) {
     const category = categories.filter((item) => item !== name);
     setCategories(category);
   };
-
-  const {
-    register,
-    handleSubmit,
-    watch,
-    setValue,
-    formState: { errors },
-  } = useForm();
 
   const importFiles = (filesImport) => {
     const oldFiles = files;
@@ -84,14 +92,17 @@ export default function FormRealisation({ update = false, item = {} }) {
   };
 
   const onSubmit = async (data) => {
-    /* const formData = new FormData();
+    const formData = new FormData();
     let newItem = {
-      title: data.title,
-      subtitle: data.subtitle,
-      description: data.description,
-      date: data.date,
-      categorie: categories,
-      place: data.place,
+      title: data.title ? data.title : item.title,
+      type: data.type ? data.type : item.type,
+      description: data.description ? data.description : item.description,
+      date: data.date ? data.date : item.date,
+      categories: categories,
+      place: data.place ? data.place : item.place,
+      surface: data.surface ? data.surface : item.surface,
+      statut: data.statut ? data.statut : item.statut,
+      client: data.client ? data.client : item.client,
     };
     if (update) {
       newItem._id = item._id;
@@ -102,28 +113,64 @@ export default function FormRealisation({ update = false, item = {} }) {
         formData.append("files", files[i]);
       }
     }
-
     if (update) {
       dispatch(updateItemHandler(item._id, formData, filesToDelete));
     } else {
       dispatch(addItemHandler(formData));
-    } */
+    }
   };
 
-  /*  useEffect(() => {
-    if (Object.keys(item).length === 0) {
-      dispatch(getitemHandler());
+  useEffect(() => {
+    if (update) {
+      dispatch(getItemsHandler(null, null, null, itemId));
+    }
+    if (!update) {
+      setItem({});
+      reset({});
+      setFiles([]);
+      setCategories([]);
+    }
+    return () => {
+      dispatch(resetGetItem());
+    };
+  }, [update]);
+
+  useEffect(() => {
+    if (update && items[0]) {
+      if (items[0]._id === itemId) {
+        setFiles(items[0].photos);
+        setCategories(items[0].categories);
+        setItem(items[0]);
+      }
+    }
+    return () => {};
+  }, [items[0]]);
+
+  useEffect(() => {
+    if (successAdd) {
+      toast.success("Ajouté avec succés !");
+      reset({});
+      setFiles([]);
+      setCategories([]);
+      dispatch(resetItemSuccess());
     }
     if (successUpdate) {
       toast.success("Modifications enregistrées !");
-      dispatch(resetitem());
+      setFilesToDelete([]);
+      dispatch(resetGetItem());
+      dispatch(resetItemSuccess());
+      dispatch(getItemsHandler(null, null, null, itemId));
+    }
+    if (errorAdd) {
+      toast.error(errorAdd);
+      dispatch(resetItemSuccess());
     }
     if (errorUpdate) {
       toast.error("Impossible d'enregistrer les modifications !");
-      dispatch(resetitem());
+      dispatch(resetItemSuccess());
     }
-    return () => {}; 
-  }, [successUpdate, errorUpdate]);*/
+    return () => {};
+  }, [successAdd, successUpdate, errorAdd, errorUpdate]);
 
   return (
     <div className="form-admin">
@@ -177,9 +224,9 @@ export default function FormRealisation({ update = false, item = {} }) {
         <div className="form-group">
           <label>Surface (m²)</label>
           <input
-            {...register("area")}
+            {...register("surface")}
             placeholder="Surface"
-            defaultValue={item.area}
+            defaultValue={item.surface}
           />
         </div>
         <div className="form-group">
@@ -193,8 +240,8 @@ export default function FormRealisation({ update = false, item = {} }) {
         <div className="form-group">
           <label>Présentation</label>
           <textarea
-            {...register("presentation")}
-            defaultValue={item.presentation}
+            {...register("description")}
+            defaultValue={update ? item.description : ""}
           />
         </div>
       </form>
@@ -224,7 +271,7 @@ export default function FormRealisation({ update = false, item = {} }) {
         </div>
       </form>
       <div className="upload-zone-container">
-        <h2>Fichiers</h2>
+        <h2>Photos</h2>
         <div className="apercu-zone many-images">
           {files.length > 0 ? (
             files.map((file, i) =>
@@ -285,11 +332,9 @@ export default function FormRealisation({ update = false, item = {} }) {
       <button
         form="form-realisation"
         type="submit"
-        /*         disabled={loadingUpdate ? true : false}
-         */
+        disabled={loadingUpdate ? true : false}
       >
-        {/*         {loadingUpdate ? <LoadingSVG /> : "Valider les modifications"}
-         */}
+        {loadingUpdate ? <LoadingSVG /> : "Valider"}
       </button>
     </div>
   );

@@ -20,6 +20,7 @@
   margin-bottom: 2rem;
   font-family: "Poppins", sans-serif;
   padding: 0.5rem;
+  color: #303030;
 }
 .auth input::placeholder {
   color: rgba(112, 112, 112, 0.4);
