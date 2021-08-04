@@ -1,37 +1,48 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 /* import { useDispatch, useSelector } from "react-redux";
- */ import EditorJs from "react-editor-js";
+ */
 import "../1-css/FormAdmin.css";
 import { useForm } from "react-hook-form";
 import uniqId from "uniqid";
 import { BiImport } from "react-icons/bi";
 import { FaPortrait } from "react-icons/fa";
-import { EDITOR_JS_TOOLS } from "../constants";
 /* import {
-  getInfosHandler,
-  resetInfos,
-  updateInfosHandler,
+  getitemHandler,
+  resetitem,
+  updateitemHandler,
 } from "../../3-actions/infoActions"; */
 import { LoadingSVG } from "./LoadingComponents";
 import { toast } from "react-toastify";
 
-export default function FormRealisation({
-  infos = { lastname: "", firstname: "", aboutPhoto: {} },
-}) {
-  const instanceRef = useRef(null);
-
+export default function FormRealisation({ update = false, item = {} }) {
   /*  const dispatch = useDispatch();
-  const updateInfos = useSelector((state) => state.updateInfos);
+  const updateitem = useSelector((state) => state.updateitem);
   const {
     loading: loadingUpdate,
     success: successUpdate,
     error: errorUpdate,
-  } = updateInfos;
+  } = updateitem;
 
-  const getInfos = useSelector((state) => state.getInfos);
-  const { loading: loadingGet, infos, error: errorGet } = getInfos;
+  const getitem = useSelector((state) => state.getitem);
+  const { loading: loadingGet, item, error: errorGet } = getitem;
 */
-  const [file, setFile] = useState(null);
+  const [files, setFiles] = useState([]);
+  const [categoryName, setCategoryName] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [filesToDelete, setFilesToDelete] = useState([]);
+
+  const submitCategory = (e) => {
+    e.preventDefault();
+    if (e.target[0].value) {
+      const category = categories;
+      setCategories([...category, e.target[0].value.toLowerCase()]);
+      setCategoryName("");
+    }
+  };
+  const removeCategory = (name) => {
+    const category = categories.filter((item) => item !== name);
+    setCategories(category);
+  };
 
   const {
     register,
@@ -41,56 +52,75 @@ export default function FormRealisation({
     formState: { errors },
   } = useForm();
 
-  const importFile = (fileImport) => {
-    const newFile = fileImport;
-    let previewFile = null;
-    if (newFile.type.split("/")[0] === "image" && newFile.size > 1000000) {
-      toast.error(
-        `${newFile.name} est trop volumineux (+ 1Mo). Compression requise.`
-      );
-    } else {
-      previewFile = Object.assign(newFile, {
-        id: uniqId(),
-        preview: URL.createObjectURL(newFile),
-      });
-    }
-    if (previewFile) {
-      setFile(previewFile);
-    }
+  const importFiles = (filesImport) => {
+    const oldFiles = files;
+    const newfiles = filesImport;
+    const previewFile = newfiles.filter((image, i) => {
+      if (image.type.split("/")[0] === "image" && image.size > 1000000) {
+        toast.error(
+          `${image.name} est trop volumineux (+1Mo). Compression requise.`
+        );
+        return;
+      } else {
+        return Object.assign(image, {
+          id: uniqId(),
+          imported: false,
+          preview: URL.createObjectURL(image),
+        });
+      }
+    });
+    setFiles(oldFiles.concat(previewFile));
   };
 
-  const onSubmit = async (dataForm) => {
-    console.log(dataForm);
-    /* const savedData = await instanceRef.current.save();
-    const infosUpdated = {
-      lastname: dataForm.lastname ? dataForm.lastname : infos.lastname,
-      firstname: dataForm.firstname ? dataForm.firstname : infos.firstname,
-      email: dataForm.email ? dataForm.email : infos.email,
-      phone: dataForm.phone ? dataForm.phone : infos.phone,
-      city: dataForm.city ? dataForm.city : infos.city,
-      country: dataForm.country ? dataForm.country : infos.country,
-      facebook: dataForm.facebook ? dataForm.facebook : infos.facebook,
-      instagram: dataForm.instagram ? dataForm.instagram : infos.instagram,
-      twitter: dataForm.twitter ? dataForm.twitter : infos.twitter,
-      aboutDescription: savedData,
+  const deleteFile = (fileDelete) => {
+    let newFiles;
+    if (fileDelete.imported === false) {
+      newFiles = files.filter((file) => file.id !== fileDelete.id);
+    } else {
+      setFilesToDelete([...filesToDelete, fileDelete]);
+      newFiles = files.filter((file) => file.src !== fileDelete.src);
+    }
+    setFiles(newFiles);
+  };
+
+  const onSubmit = async (data) => {
+    /* const formData = new FormData();
+    let newItem = {
+      title: data.title,
+      subtitle: data.subtitle,
+      description: data.description,
+      date: data.date,
+      categorie: categories,
+      place: data.place,
     };
-    const formData = new FormData();
-    formData.append("infos", JSON.stringify(infosUpdated));
-    formData.append("image", file);
-    dispatch(updateInfosHandler(formData)); */
+    if (update) {
+      newItem._id = item._id;
+    }
+    formData.append("item", JSON.stringify(newItem));
+    for (let i = 0; i < files.length; i++) {
+      if (!files[i].imported) {
+        formData.append("files", files[i]);
+      }
+    }
+
+    if (update) {
+      dispatch(updateItemHandler(item._id, formData, filesToDelete));
+    } else {
+      dispatch(addItemHandler(formData));
+    } */
   };
 
   /*  useEffect(() => {
-    if (Object.keys(infos).length === 0) {
-      dispatch(getInfosHandler());
+    if (Object.keys(item).length === 0) {
+      dispatch(getitemHandler());
     }
     if (successUpdate) {
       toast.success("Modifications enregistrées !");
-      dispatch(resetInfos());
+      dispatch(resetitem());
     }
     if (errorUpdate) {
       toast.error("Impossible d'enregistrer les modifications !");
-      dispatch(resetInfos());
+      dispatch(resetitem());
     }
     return () => {}; 
   }, [successUpdate, errorUpdate]);*/
@@ -102,13 +132,13 @@ export default function FormRealisation({
         className="form-realisation"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h2>Saisissez les infos générales</h2>
+        <h2>Informations</h2>
         <div className="form-group">
           <label>Titre</label>
           <input
             {...register("title")}
             placeholder="Titre"
-            defaultValue={infos.title}
+            defaultValue={item.title}
           />
         </div>
         <div className="form-group">
@@ -116,7 +146,7 @@ export default function FormRealisation({
           <input
             {...register("type")}
             placeholder="Ex. Aménagement, Réhabilitation"
-            defaultValue={infos.type}
+            defaultValue={item.type}
           />
         </div>
         <div className="form-group">
@@ -124,7 +154,7 @@ export default function FormRealisation({
           <input
             {...register("place")}
             placeholder="Ex. Marseille, France"
-            defaultValue={infos.place}
+            defaultValue={item.place}
           />
         </div>
         <div className="form-group">
@@ -132,7 +162,7 @@ export default function FormRealisation({
           <input
             {...register("client")}
             placeholder="Ex. Particulier, Professionnel"
-            defaultValue={infos.client}
+            defaultValue={item.client}
           />
         </div>
         <div className="form-group">
@@ -141,7 +171,7 @@ export default function FormRealisation({
             {...register("date")}
             placeholder="Date"
             type="date"
-            defaultValue={infos.date}
+            defaultValue={item.date}
           />
         </div>
         <div className="form-group">
@@ -149,7 +179,7 @@ export default function FormRealisation({
           <input
             {...register("area")}
             placeholder="Surface"
-            defaultValue={infos.area}
+            defaultValue={item.area}
           />
         </div>
         <div className="form-group">
@@ -157,111 +187,97 @@ export default function FormRealisation({
           <input
             {...register("statut")}
             placeholder="Ex. Terminé"
-            defaultValue={infos.statut}
+            defaultValue={item.statut}
           />
         </div>
         <div className="form-group">
           <label>Présentation</label>
           <textarea
             {...register("presentation")}
-            defaultValue={infos.presentation}
+            defaultValue={item.presentation}
           />
         </div>
       </form>
-      <div className="upload-zone-container one-file">
-        <h2>Ajoutez la photo principale du projet</h2>
-        <div className="apercu-zone one-image">
-          {/* {!file ? (
-            <img src={infos.aboutPhoto} />
-          ) : file.type === "video/mp4" ? (
-            <video src={file.preview} />
+      <form
+        id={"form-category"}
+        className="form-category"
+        onSubmit={(e) => submitCategory(e)}
+      >
+        <h2>Catégories</h2>
+        <div className="category-input-container">
+          <input
+            value={categoryName}
+            className="category-input"
+            placeholder="Catégories"
+            onChange={(e) => setCategoryName(e.target.value)}
+          />
+          <button type="submit" form={"form-category"}>
+            +
+          </button>
+        </div>
+        <div className="categories-container">
+          {categories.map((item, i) => (
+            <span onClick={() => removeCategory(item)} key={i}>
+              {item}
+            </span>
+          ))}
+        </div>
+      </form>
+      <div className="upload-zone-container">
+        <h2>Fichiers</h2>
+        <div className="apercu-zone many-images">
+          {files.length > 0 ? (
+            files.map((file, i) =>
+              file.type === "video/mp4" ? (
+                <video
+                  key={i}
+                  src={file.preview ? file.preview : file.src}
+                  onClick={() => deleteFile(file)}
+                />
+              ) : (
+                <img
+                  key={i}
+                  src={file.preview ? file.preview : file.src}
+                  onClick={() => deleteFile(file)}
+                />
+              )
+            )
           ) : (
-            <img src={file.preview} />
-          )} */}
+            <FaPortrait size={250} />
+          )}
         </div>
         <div className="upload-zone">
           <BiImport size={120} />
-          <p>Cliquez ou déposez votre fichier ici.</p>
+          <p>Cliquez ou déposez vos fichiers ici.</p>
           <input
-            id="file"
+            id={"files"}
             type="file"
-            {...register("file")}
+            multiple
+            {...register("files")}
             onChange={(e) => {
-              if (e.target.files[0]) {
-                importFile(e.target.files[0]);
+              if (e.target.files.length > 0) {
+                importFiles([...e.target.files]);
               }
             }}
           />
           <label
-            htmlFor="file"
+            htmlFor={"files"}
             className="drop-zone"
             onDragLeave={(e) => {
               e.preventDefault();
               const dropZone = document.getElementsByClassName("drop-zone")[0];
               dropZone.classList.remove("active");
-              console.log("File is out zone");
             }}
             onDragOver={(e) => {
               e.preventDefault();
               const dropZone = document.getElementsByClassName("drop-zone")[0];
               dropZone.classList.add("active");
-              console.log("File is over zone");
             }}
             onDrop={(e) => {
               e.preventDefault();
               const dropZone = document.getElementsByClassName("drop-zone")[0];
               dropZone.classList.remove("active");
-              console.log("File is in the zone");
-              importFile(e.dataTransfer.files[0]);
-            }}
-          ></label>
-        </div>
-      </div>
-      <div className="upload-zone-container many-files">
-        <h2>Ajouter les photos du projet</h2>
-        <div className="apercu-zone one-image">
-          {/* {!file ? (
-            <img src={infos.aboutPhoto} />
-          ) : file.type === "video/mp4" ? (
-            <video src={file.preview} />
-          ) : (
-            <img src={file.preview} />
-          )} */}
-        </div>
-        <div className="upload-zone">
-          <BiImport size={120} />
-          <p>Cliquez ou déposez votre fichier ici.</p>
-          <input
-            id="file"
-            type="file"
-            {...register("file")}
-            onChange={(e) => {
-              if (e.target.files[0]) {
-                importFile(e.target.files[0]);
-              }
-            }}
-          />
-          <label
-            htmlFor="file"
-            className="drop-zone"
-            onDragLeave={(e) => {
-              e.preventDefault();
-              const dropZone = document.getElementsByClassName("drop-zone")[0];
-              dropZone.classList.remove("active");
-              console.log("File is out zone");
-            }}
-            onDragOver={(e) => {
-              e.preventDefault();
-              const dropZone = document.getElementsByClassName("drop-zone")[0];
-              dropZone.classList.add("active");
-              console.log("File is over zone");
-            }}
-            onDrop={(e) => {
-              e.preventDefault();
-              const dropZone = document.getElementsByClassName("drop-zone")[0];
-              dropZone.classList.remove("active");
-              console.log("File is in the zone");
-              importFile(e.dataTransfer.files[0]);
+              importFiles([...e.dataTransfer.files]);
             }}
           ></label>
         </div>

@@ -15,9 +15,7 @@ import { EDITOR_JS_TOOLS } from "../constants";
 import { LoadingSVG } from "./LoadingComponents";
 import { toast } from "react-toastify";
 
-export default function FormAbout({
-  infos = { lastname: "", firstname: "", aboutPhoto: {} },
-}) {
+export default function FormAbout({ infos = { lastname: "", firstname: "" } }) {
   const instanceRef = useRef(null);
 
   /*  const dispatch = useDispatch();
@@ -171,13 +169,15 @@ export default function FormAbout({
       <div className="upload-zone-container">
         <h2>Modifiez l'image de présentation (A propos)</h2>
         <div className="apercu-zone one-image">
-          {/* {!file ? (
-            <img src={infos.aboutPhoto} />
-          ) : file.type === "video/mp4" ? (
-            <video src={file.preview} />
+          {file ? (
+            infos.aboutPhoto ? (
+              <img src={infos.aboutPhoto} />
+            ) : (
+              <img src={file.preview} />
+            )
           ) : (
-            <img src={file.preview} />
-          )} */}
+            <FaPortrait size={250} />
+          )}
         </div>
         <div className="upload-zone">
           <BiImport size={120} />

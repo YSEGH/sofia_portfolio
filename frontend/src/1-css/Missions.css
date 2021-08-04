@@ -1,12 +1,22 @@
 .missions {
-  padding-top: 10rem;
-  padding-inline: 5rem;
 }
 
 .missions h1 {
-  font-size: 40px;
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 2.5rem;
   font-weight: 600;
+  text-align: left;
+  letter-spacing: 2px;
+  text-transform: capitalize;
 }
 .missions h1 span {
   font-weight: 200;
+}
+
+@media screen and (max-width: 1050px) {
+  .missions h1 {
+    text-align: center;
+  }
 }

@@ -25,6 +25,9 @@ export default function Realisation_Page() {
     <div className="page realisation-page">
       <div className="text-container">
         <h1>Nom du projet</h1>
+        <div className="photo-container">
+          <img src="/static-files/photo.jpg" />
+        </div>
         <p>
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout. The point of
@@ -56,37 +59,37 @@ export default function Realisation_Page() {
       <div className="photos-container">
         <div className="photo-container">
           <div className="photo-content" onClick={(e) => displayImage(e)}>
-            <MdClose size={30} onClick={(e) => displayImage(e)} />
+            <MdClose size={20} onClick={(e) => displayImage(e)} />
             <img src="/static-files/photo.jpg" />
           </div>
         </div>
         <div className="photo-container">
           <div className="photo-content" onClick={(e) => displayImage(e)}>
-            <MdClose size={30} onClick={(e) => displayImage(e)} />
+            <MdClose size={20} onClick={(e) => displayImage(e)} />
             <img src="/static-files/photo-2.jpg" />
           </div>
         </div>
         <div className="photo-container">
           <div className="photo-content" onClick={(e) => displayImage(e)}>
-            <MdClose size={30} onClick={(e) => displayImage(e)} />
+            <MdClose size={20} onClick={(e) => displayImage(e)} />
             <img src="/static-files/photo.jpg" />
           </div>
         </div>
         <div className="photo-container">
           <div className="photo-content" onClick={(e) => displayImage(e)}>
-            <MdClose size={30} onClick={(e) => displayImage(e)} />
+            <MdClose size={20} onClick={(e) => displayImage(e)} />
             <img src="/static-files/photo-2.jpg" />
           </div>
         </div>
         <div className="photo-container">
           <div className="photo-content" onClick={(e) => displayImage(e)}>
-            <MdClose size={30} onClick={(e) => displayImage(e)} />
+            <MdClose size={20} onClick={(e) => displayImage(e)} />
             <img src="/static-files/photo.jpg" />
           </div>
         </div>
         <div className="photo-container">
           <div className="photo-content" onClick={(e) => displayImage(e)}>
-            <MdClose size={30} onClick={(e) => displayImage(e)} />
+            <MdClose size={20} onClick={(e) => displayImage(e)} />
             <img src="/static-files/photo-2.jpg" />
           </div>
         </div>

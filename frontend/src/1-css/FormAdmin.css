@@ -2,7 +2,7 @@
   height: auto;
   width: fit-content;
   margin: auto;
-  font-family: "Poppins", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   padding-bottom: 5rem;
   display: flex;
   flex-direction: column;
@@ -10,14 +10,69 @@
   justify-content: center;
 }
 .form-admin h2 {
-  font-size: 1.5em !important;
-  margin: 4rem auto 3rem auto;
-  font-weight: 400;
+  font-size: 2em;
+  margin: 4rem auto 2rem auto;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 600;
   text-align: center;
+  min-width: 95%;
+  max-width: 95%;
+  color: #303030;
+}
+
+.form-admin form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+.form-admin form .form-group {
+  width: 20rem;
+  width: 45%;
+  max-width: 95%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 0.5rem;
+}
+.form-admin form label {
+  width: 20rem;
+  max-width: 100%;
+  margin-bottom: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: #303030;
+}
+.form-admin form input,
+.form-admin form select,
+.form-admin form textarea {
+  border: 1px solid rgba(112, 112, 112, 0.2);
+  width: 20rem;
+  max-width: 100%;
+  height: 3rem;
+  margin-bottom: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  padding: 0.5rem;
+  outline: none;
+  box-sizing: border-box;
+  color: #707070;
+}
+.form-admin form textarea {
+  height: 15rem;
+}
+.form-admin form input::placeholder,
+.form-admin form select::placeholder,
+.form-admin form textarea::placeholder {
+  color: rgb(112, 112, 112, 0.4);
 }
 .form-admin button {
   height: 3rem;
   width: 20rem;
+  max-width: 95%;
   background-color: #ff0513;
   color: #fff;
   border: none;
@@ -26,51 +81,7 @@
   font: 400 20px "Poppins";
   margin: 3rem auto;
 }
-.form-admin form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.form-admin form .form-group {
-  width: 20rem;
-  text-align: left;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  margin-bottom: 2rem;
-}
-.form-admin form label {
-  width: 20rem;
-  margin-bottom: 0.5rem;
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  text-transform: uppercase;
-  text-decoration: underline;
-  color: #707070;
-}
-.form-admin form input,
-.form-admin form select,
-.form-admin form textarea {
-  border: 1px solid rgba(112, 112, 112, 0.2);
-  width: 20rem;
-  height: 3rem;
-  margin-bottom: 1.5rem;
-  font-family: "Poppins", sans-serif;
-  padding: 0.5rem;
-  outline: none;
-  box-sizing: border-box;
-  color: #707070;
-  border-radius: 5px;
-}
-.form-admin form textarea {
-  height: 10rem;
-}
-.form-admin form input::placeholder,
-.form-admin form select::placeholder,
-.form-admin form textarea::placeholder {
-  color: rgb(112, 112, 112, 0.4);
-}
+
 .form-admin form button:hover {
   background-color: #d6000b;
 }
@@ -79,15 +90,54 @@
   min-height: 25rem;
   width: 50rem;
   max-width: 80vw;
-  border: 1px solid rgba(112, 112, 112, 0.2);
+  border: 1px solid rgba(112, 112, 112, 0.1);
   padding: 2rem;
   font-weight: 300;
   text-align: left;
   margin: auto;
-  border-radius: 5px;
-  color: #707070;
+  color: #303030;
+  font-family: "Poppins", sans-serif;
 }
 
+/* Categorie */
+.form-admin .form-category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.form-admin .form-category h2 {
+  margin-bottom: 0;
+}
+.form-admin .form-category .category-input-container {
+  display: flex;
+  width: 20rem;
+  max-width: 95%;
+}
+.form-admin .form-category .category-input-container .category-input {
+  margin: 3rem auto;
+  margin-bottom: 0;
+  max-width: 85%;
+}
+.form-admin .form-category .categories-container {
+  max-width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.form-admin .form-category .categories-container span {
+  background-color: #303030;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.form-admin .form-category button {
+  height: 3rem;
+  width: 3rem !important;
+}
 /* Upload zone */
 .upload-zone-container {
   width: fit-content;
@@ -95,7 +145,6 @@
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 4rem;
 }
 .upload-zone-container h2 {
   width: 100%;
@@ -110,8 +159,11 @@
   flex-wrap: wrap;
   color: rgba(211, 211, 211, 0.493);
   overflow-y: scroll;
+  margin: 2rem 1rem;
+  font-family: "Poppins", sans-serif;
 }
-.upload-zone-container svg {
+
+.upload-zone-container svg:nth-child(1) {
   color: rgba(211, 211, 211, 0.349);
 }
 .upload-zone-container .upload-zone {
@@ -121,7 +173,7 @@
 }
 .upload-zone-container .upload-zone p {
   text-align: center;
-  color: rgb(112, 112, 112, 0.4);
+  color: rgb(112, 112, 112, 0.2);
 }
 .upload-zone-container .upload-zone input {
   width: 100%;
@@ -140,11 +192,17 @@
 .upload-zone-container .upload-zone label.active {
   background-color: rgba(117, 117, 117, 0.11);
 }
+.upload-zone-container .apercu-zone {
+  width: fit-content;
+}
 .upload-zone-container .apercu-zone img,
 .upload-zone-container .apercu-zone video {
   width: 15rem;
   height: 20rem;
   object-fit: contain;
+}
+.upload-zone-container .apercu-zone svg {
+  height: 100%;
 }
 .upload-zone-container .apercu-zone.many-images {
   flex-direction: row;
@@ -158,17 +216,25 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1050px) {
   .upload-zone-container div {
     margin-bottom: 2rem;
+  }
+  .text-editor {
+    width: 95%;
+    max-width: none;
   }
 }
 @media screen and (max-width: 550px) {
   .upload-zone-container {
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
   }
   .form-admin form .form-group {
     width: 100%;
+    margin-bottom: 0;
   }
   .form-admin form label {
     width: 100%;

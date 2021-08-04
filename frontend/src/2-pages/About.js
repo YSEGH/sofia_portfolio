@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../1-css/About.css";
 
 export default function About() {
+  useEffect(() => {
+    document.title = "2SAP - A propos";
+    return () => {};
+  }, []);
+
   return (
     <div className="page about">
+      <h1>A propos</h1>
+      <div className="photo-container">
+        <img src="/static-files/photo-2.jpg" />
+      </div>
       <div className="text-container">
-        <h1>A propos</h1>
         <p>
           Le Lorem Ipsum est simplement du faux texte employé dans la
           composition et la mise en page avant impression. Le Lorem Ipsum est le
@@ -25,11 +33,6 @@ export default function About() {
           années 1500, quand un imprimeur anonyme assembla ensemble des morceaux
           de texte pour réaliser un livre spécimen de polices de texte.
         </p>
-      </div>
-      <div className="photo-container">
-        <div className="background-photo">
-          <img src="/static-files/photo-2.jpg" />
-        </div>
       </div>
     </div>
   );

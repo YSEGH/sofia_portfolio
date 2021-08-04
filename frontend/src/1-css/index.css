@@ -12,13 +12,13 @@ body {
 *::-webkit-scrollbar {
   display: none;
 }
-h1,
+/* h1,
 h2,
 h3,
 h4,
 p {
   color: #707070;
-}
+} */
 
 path {
   pointer-events: none;

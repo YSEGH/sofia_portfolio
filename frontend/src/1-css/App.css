@@ -3,10 +3,26 @@
   min-height: 100vh;
   position: relative;
   display: flex;
+  flex-direction: column;
 }
 
 .page {
   flex: auto;
-  width: 100vw;
-  padding: 5.5rem 0 2rem 0;
+  width: 80vw;
+  padding: 0rem 0 0 0;
+  margin: auto;
+  margin-bottom: 3rem;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+ul {
+  padding: 0;
+}
+@media screen and (max-width: 1050px) {
+  .page {
+    width: 100vw;
+  }
 }
