@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import "./1-css/App.css";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { LoadingSpinnerFullPage } from "./3-components/LoadingComponents";
@@ -15,6 +15,13 @@ const Auth = lazy(() => import("./2-pages/Auth"));
 const Admin = lazy(() => import("./2-pages/Admin"));
 
 function App() {
+  useEffect(() => {
+    if (window.location.hash === "#/") {
+      window.location.replace("#/a-propos");
+    }
+    return () => {};
+  }, []);
+
   return (
     <Router>
       <div className="App">

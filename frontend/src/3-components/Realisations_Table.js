@@ -11,6 +11,7 @@ import { BiSearch } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import "../1-css/TableItem.css";
 
 export default function Realisations_Table() {
   const dispatch = useDispatch();
@@ -56,7 +57,7 @@ export default function Realisations_Table() {
         title="Mes réalisations"
         options={{
           exportButton: false,
-          pageSize: 5,
+          pageSize: 25,
         }}
         style={{ boxShadow: "none", margin: "3rem auto", fontWeight: "200" }}
         columns={[
@@ -76,14 +77,12 @@ export default function Realisations_Table() {
           },
           {
             render: (RowData) => (
-              <>
-                <button
-                  className="button-delete-contenu"
-                  onClick={() => onClickDeleteItem(RowData._id)}
-                >
-                  <MdDelete size={30} />
-                </button>
-              </>
+              <Link
+                className="button-delete-contenu"
+                onClick={() => onClickDeleteItem(RowData._id)}
+              >
+                <MdDelete size={30} />
+              </Link>
             ),
           },
         ]}
