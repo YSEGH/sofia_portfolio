@@ -97,8 +97,12 @@ export default function FormUser() {
         placeholder="Votre nouveau mot de passe (optionnel)"
       />
 
-      <button form="form-user" type="submit">
-        MODIFIER
+      <button
+        form="form-user"
+        type="submit"
+        disabled={loadingUpdate || loadingReset ? true : false}
+      >
+        {loadingUpdate || loadingReset ? <LoadingSVG /> : "Modifier"}
       </button>
       <p
         onClick={(e) => {

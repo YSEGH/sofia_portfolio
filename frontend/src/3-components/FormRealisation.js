@@ -332,9 +332,9 @@ export default function FormRealisation({ update = false }) {
       <button
         form="form-realisation"
         type="submit"
-        disabled={loadingUpdate ? true : false}
+        disabled={loadingUpdate || loadingAdd ? true : false}
       >
-        {loadingUpdate ? <LoadingSVG /> : "Valider"}
+        {loadingUpdate || loadingAdd ? <LoadingSVG /> : "Valider"}
       </button>
     </div>
   );

@@ -4,7 +4,7 @@ import { TiTick } from "react-icons/ti";
 import "../1-css/LoadingComponents.css";
 
 function LoadingSVG() {
-  return <ImSpinner6 className="loading-svg" size={40} />;
+  return <ImSpinner6 className="loading-svg" size={20} />;
 }
 
 function LoadingSpinner() {

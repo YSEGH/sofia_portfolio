@@ -88,12 +88,13 @@ export default function FormAbout() {
     if (successUpdate) {
       toast.success("Modifications enregistrées !");
       setFile(null);
-      dispatch(getInfosHandler());
       dispatch(resetInfos());
+      dispatch(getInfosHandler());
     }
     if (errorUpdate) {
       toast.error("Impossible d'enregistrer les modifications !");
       dispatch(resetInfos());
+      dispatch(getInfosHandler());
     }
     return () => {};
   }, [successUpdate, errorUpdate]);
@@ -237,7 +238,7 @@ export default function FormAbout() {
         type="submit"
         disabled={loadingUpdate ? true : false}
       >
-        {loadingUpdate ? <LoadingSVG /> : "Valider les modifications"}
+        {loadingUpdate ? <LoadingSVG /> : "Valider"}
       </button>
     </div>
   );

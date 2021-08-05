@@ -1,39 +1,43 @@
 import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "../1-css/About.css";
+import { getInfosHandler, resetInfos } from "../5-actions/infoActions";
+import EditorJs from "react-editor-js";
+import { EDITOR_JS_TOOLS } from "../constants";
 
 export default function About() {
+  const dispatch = useDispatch();
+
+  const getInfos = useSelector((state) => state.getInfos);
+  const { loading, infos, error } = getInfos;
+
   useEffect(() => {
     document.title = "2SAP - A propos";
-    return () => {};
+    dispatch(getInfosHandler());
+    return () => {
+      dispatch(resetInfos());
+    };
   }, []);
 
   return (
-    <div className="page about">
-      <h1>A propos</h1>
-      <div className="photo-container">
-        <img src="/static-files/photo-2.jpg" />
+    !loading && (
+      <div className="page about">
+        <h1>A propos</h1>
+        <div className="photo-container">
+          {infos.aboutPhoto && (
+            <img src={infos.aboutPhoto} alt="seghrouchni_sofia" />
+          )}
+        </div>
+        <div className="text-container">
+          {infos.aboutDescription && (
+            <EditorJs
+              tools={EDITOR_JS_TOOLS}
+              data={infos.aboutDescription}
+              readOnly
+            />
+          )}
+        </div>
       </div>
-      <div className="text-container">
-        <p>
-          Le Lorem Ipsum est simplement du faux texte employé dans la
-          composition et la mise en page avant impression. Le Lorem Ipsum est le
-          faux texte standard de l'imprimerie depuis les années 1500, quand un
-          imprimeur anonyme assembla ensemble des morceaux de texte pour
-          réaliser un livre spécimen de polices de texte.
-          <br />
-          <br />
-          Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à
-          la bureautique informatique, sans que son contenu n'en soit modifié.
-          Il a été popularisé dans les années 1960 grâce à la vente de feuilles
-          Letraset contenant des passages du Lorem Ipsum, et, plus récemment,
-          par son inclusion dans des applications de mise en page de texte,
-          comme Aldus PageMaker. Le Lorem Ipsum est simplement du faux texte
-          employé dans la composition et la mise en page avant impression. Le
-          Lorem Ipsum est le faux texte standard de l'imprimerie depuis les
-          années 1500, quand un imprimeur anonyme assembla ensemble des morceaux
-          de texte pour réaliser un livre spécimen de polices de texte.
-        </p>
-      </div>
-    </div>
+    )
   );
 }

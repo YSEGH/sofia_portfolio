@@ -24,12 +24,12 @@ function App() {
             <Route path="/a-propos" exact render={() => <About />} />
             <Route path="/missions" render={() => <Missions />} />
             <Route
-              path="/mes-realisations"
+              path="/mes-realisations/:page?/:filters?"
               exact
-              render={() => <Realisations />}
+              render={(props) => <Realisations {...props} />}
             />
             <Route
-              path="/mes-realisations/:id"
+              path="/realisation/:itemId"
               exact
               render={() => <Realisation_Page />}
             />

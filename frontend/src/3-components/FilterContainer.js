@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "../1-css/FilterContainer.css";
 import { useDispatch, useSelector } from "react-redux";
-/* import { getFiltersHandler } from "../../3-actions/itemActions";
- */ import { MdClose, MdAdd } from "react-icons/md";
+import { getFiltersHandler } from "../5-actions/itemActions";
+import { MdClose, MdAdd } from "react-icons/md";
 import { useParams } from "react-router";
 
-export default function FilterContainer({ content, props, url }) {
-  const filters = ["test", "test"];
-  /*  const dispatch = useDispatch();
-  const { filters: filtersParams = null } = useParams();
+export default function FilterContainer({ props }) {
+  const dispatch = useDispatch();
+  const { page = 1, filters: filtersParams = null } = useParams();
 
   const getFilters = useSelector((state) => state.getFilters);
   const { loading: loadingFilters, filters, error: errorFilters } = getFilters;
@@ -56,13 +55,13 @@ export default function FilterContainer({ content, props, url }) {
     } else {
       filtersParams = "";
     }
-    props.history.push(`${url}/1/${filtersParams}`);
+    props.history.push(`/mes-realisations/${page}/${filtersParams}`);
   };
 
   useEffect(() => {
-    dispatch(getFiltersHandler(content, filtersSelected));
+    dispatch(getFiltersHandler(filtersSelected));
     return () => {};
-  }, [filtersParams]); */
+  }, [filtersParams]);
 
   return (
     <div className="filter-container">
@@ -72,20 +71,21 @@ export default function FilterContainer({ content, props, url }) {
             i < 3 ? (
               <li key={i}>
                 <a
-                /* className={`filter-${filter.name} ${
+                  className={`filter-${filter.name} ${
                     filtersSelected.includes(filter.name) ? "active" : ""
                   }`}
-                  onClick={(e) => selectFilterHandler(filter, e.target)} */
+                  onClick={(e) => selectFilterHandler(filter, e.target)}
                 >
-                  {/* {filter.name} ({filter.qty}) */}
-                  {filter}
+                  {filter.name} ({filter.qty})
                 </a>
               </li>
             ) : null
           )}
         </ul>
         <button
-          className="filters-button" /* onClick={() => displayFilter()} */
+          className="filters-button"
+          style={{ visibility: filters.length > 3 ? "visible" : "hidden" }}
+          onClick={() => displayFilter()}
         >
           Filtre(s) <MdAdd size={15} />
         </button>
@@ -94,19 +94,17 @@ export default function FilterContainer({ content, props, url }) {
         <MdClose
           className="close-icon"
           size={25}
-          /*           onClick={() => displayFilter()}
-           */
+          onClick={() => displayFilter()}
         />
         <h2>Filtre(s)</h2>
         <ul>
           {filters.map((filter, i) => (
             <li key={i}>
               <a
-              /*className={`filter-${filter.name} ${
+                className={`filter-${filter.name} ${
                   filtersSelected.includes(filter.name) ? "active" : ""
                 }`}
-                                onClick={(e) => selectFilterHandler(filter, e.target)}
-                 */
+                onClick={(e) => selectFilterHandler(filter, e.target)}
               >
                 {filter.name} ({filter.qty})
               </a>

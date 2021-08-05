@@ -59,7 +59,7 @@ router.get("/", async (req, res) => {
   const per_page = req.query.per_page ? Number(req.query.per_page) : null;
   const filterID = req.query.itemId ? { _id: req.query.itemId } : {};
   const filterCategorie = req.query.filters
-    ? { categorie: { $all: req.query.filters } }
+    ? { categories: { $all: req.query.filters } }
     : {};
   try {
     const count = await Item.countDocuments({
@@ -84,7 +84,7 @@ router.get("/", async (req, res) => {
 router.get("/filters", async (req, res) => {
   let filters = [];
   const filterCategorie = req.query.filters
-    ? { categorie: { $all: req.query.filters } }
+    ? { categories: { $all: req.query.filters } }
     : {};
   try {
     const items = await Item.find({
@@ -93,7 +93,7 @@ router.get("/filters", async (req, res) => {
 
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
-      item.categorie.map((cate, i) => {
+      item.categories.map((cate, i) => {
         const cateExist = filters.find(
           (x) => x.name.toLowerCase() === cate.toLowerCase()
         );
@@ -151,7 +151,6 @@ router.put(
     let result;
     let photos = [];
     const itemAdd = JSON.parse(req.body.item);
-    console.log(req.files.files);
     try {
       const item = await Item.findById(itemAdd._id);
       /* Importation des fichiers */

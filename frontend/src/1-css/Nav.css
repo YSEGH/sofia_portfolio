@@ -1,9 +1,9 @@
 .nav {
-  width: 80vw;
+  width: 90vw;
   height: fit-content;
   font-family: "Josefin Sans", sans-serif;
   position: relative;
-  margin: auto;
+  margin: 0 auto;
   border-bottom: 1px solid #e8e8e8;
 }
 .nav .nav-burger {

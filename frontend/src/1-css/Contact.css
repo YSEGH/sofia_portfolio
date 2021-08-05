@@ -27,6 +27,8 @@
   text-align: center;
 }
 .contact .text-container {
+  max-width: 95%;
+  overflow: scroll;
   width: fit-content;
   height: fit-content;
   background-color: #fff;

@@ -70,7 +70,7 @@
   color: rgb(112, 112, 112, 0.4);
 }
 .form-admin button {
-  height: 5rem;
+  height: auto;
   width: 50rem;
   max-width: 95%;
   background-color: #ff0513;
@@ -78,7 +78,7 @@
   border: none;
   cursor: pointer;
   transition: 0.25s;
-  font: 200 2rem "Poppins";
+  font: 300 2rem "Poppins";
   margin: 3rem auto;
 }
 
@@ -135,7 +135,8 @@
   cursor: pointer;
 }
 .form-admin .form-category button {
-  height: 3rem;
+  min-height: 0;
+  height: 3rem !important;
   width: 3rem !important;
 }
 /* Upload zone */

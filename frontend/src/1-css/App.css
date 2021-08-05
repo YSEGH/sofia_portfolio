@@ -4,6 +4,13 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+button:disabled {
+  background-color: rgba(112, 112, 112, 0.2) !important;
+  cursor: auto !important;
 }
 
 .page {
@@ -22,9 +29,15 @@ ul {
   padding: 0;
 }
 
+/* Material Table */
+.MuiPaper-root.MuiPaper-elevation2.MuiPaper-rounded button {
+  background-color: transparent !important;
+}
+
 /* Text editor JS */
 .codex-editor__redactor {
   padding-bottom: 0 !important;
+  margin: auto !important;
 }
 
 @media screen and (max-width: 1050px) {
