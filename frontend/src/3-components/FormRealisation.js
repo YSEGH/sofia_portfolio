@@ -183,66 +183,92 @@ export default function FormRealisation({ update = false }) {
         <div className="form-group">
           <label>Titre</label>
           <input
-            {...register("title")}
+            {...register("title", { required: !update ? true : false })}
             placeholder="Titre"
             defaultValue={item.title}
           />
+          {errors.title && (
+            <span className="danger">Merci de saisir un titre.</span>
+          )}
         </div>
         <div className="form-group">
           <label>Type</label>
           <input
-            {...register("type")}
+            {...register("type", { required: !update ? true : false })}
             placeholder="Ex. Aménagement, Réhabilitation"
             defaultValue={item.type}
           />
+          {errors.title && (
+            <span className="danger">Merci de saisir le type.</span>
+          )}
         </div>
         <div className="form-group">
           <label>Lieu</label>
           <input
-            {...register("place")}
+            {...register("place", { required: !update ? true : false })}
             placeholder="Ex. Marseille, France"
             defaultValue={item.place}
           />
+          {errors.title && (
+            <span className="danger">Merci de saisir le lieu.</span>
+          )}
         </div>
         <div className="form-group">
           <label>Client</label>
           <input
-            {...register("client")}
+            {...register("client", { required: !update ? true : false })}
             placeholder="Ex. Particulier, Professionnel"
             defaultValue={item.client}
           />
+          {errors.title && (
+            <span className="danger">Merci de saisir la nature du client.</span>
+          )}
         </div>
         <div className="form-group">
           <label>Date</label>
           <input
-            {...register("date")}
+            {...register("date", { required: !update ? true : false })}
             placeholder="Date"
             type="date"
             defaultValue={item.date}
           />
+          {errors.title && (
+            <span className="danger">Merci de saisir la date.</span>
+          )}
         </div>
         <div className="form-group">
           <label>Surface (m²)</label>
           <input
-            {...register("surface")}
+            {...register("surface", { required: !update ? true : false })}
             placeholder="Surface"
             defaultValue={item.surface}
           />
+          {errors.title && (
+            <span className="danger">Merci de saisir la surface.</span>
+          )}
         </div>
         <div className="form-group">
           <label>Statut</label>
           <input
-            {...register("statut")}
+            {...register("statut", { required: !update ? true : false })}
             placeholder="Ex. Terminé"
             defaultValue={item.statut}
           />
+          {errors.title && (
+            <span className="danger">Merci de saisir le statut.</span>
+          )}
         </div>
         <div className="form-group">
           <label>Présentation</label>
           <textarea
-            {...register("description")}
+            {...register("description", { required: !update ? true : false })}
             defaultValue={update ? item.description : ""}
           />
+          {errors.title && (
+            <span className="danger">
+              Merci de saisir un texte de présentation.
+            </span>
+          )}
         </div>
       </form>
       <form

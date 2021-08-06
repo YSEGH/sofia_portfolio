@@ -78,6 +78,7 @@ export default function Realisations_Table() {
           {
             render: (RowData) => (
               <Link
+                to={null}
                 className="button-delete-contenu"
                 onClick={() => onClickDeleteItem(RowData._id)}
               >

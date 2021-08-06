@@ -49,6 +49,7 @@
   color: #7c7c7c;
   border: none;
   margin: auto 0;
+  visibility: hidden;
 }
 .filter-container .filter-container-list .filters-button.active,
 .filter-container .filter-container-list .filters-button:hover {

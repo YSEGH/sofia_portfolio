@@ -155,7 +155,7 @@ export default function FormAbout() {
             defaultValue={infos.country}
           />
         </div>
-        <div className="form-group">
+        {/*  <div className="form-group">
           <label>Facebook</label>
           <input
             {...register("facebook")}
@@ -170,7 +170,7 @@ export default function FormAbout() {
             placeholder="Instagram"
             defaultValue={infos.instagram}
           />
-        </div>
+        </div> */}
       </form>
       <div className="upload-zone-container">
         <h2>Modifiez l'image de présentation (A propos)</h2>

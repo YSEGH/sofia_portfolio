@@ -27,3 +27,7 @@ path {
 img {
   image-rendering: -webkit-optimize-contrast !important;
 }
+
+.danger {
+  color: red;
+}
