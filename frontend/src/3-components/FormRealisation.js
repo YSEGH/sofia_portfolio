@@ -43,22 +43,7 @@ export default function FormRealisation({ update = false }) {
 
   const [item, setItem] = useState({});
   const [files, setFiles] = useState([]);
-  const [categoryName, setCategoryName] = useState("");
-  const [categories, setCategories] = useState([]);
   const [filesToDelete, setFilesToDelete] = useState([]);
-
-  const submitCategory = (e) => {
-    e.preventDefault();
-    if (e.target[0].value) {
-      const category = categories;
-      setCategories([...category, e.target[0].value.toLowerCase()]);
-      setCategoryName("");
-    }
-  };
-  const removeCategory = (name) => {
-    const category = categories.filter((item) => item !== name);
-    setCategories(category);
-  };
 
   const importFiles = (filesImport) => {
     const oldFiles = files;
@@ -98,7 +83,6 @@ export default function FormRealisation({ update = false }) {
       type: data.type ? data.type : item.type,
       description: data.description ? data.description : item.description,
       date: data.date ? data.date : item.date,
-      categories: categories,
       place: data.place ? data.place : item.place,
       surface: data.surface ? data.surface : item.surface,
       statut: data.statut ? data.statut : item.statut,
@@ -128,7 +112,6 @@ export default function FormRealisation({ update = false }) {
       setItem({});
       reset({});
       setFiles([]);
-      setCategories([]);
     }
     return () => {
       dispatch(resetGetItem());
@@ -139,7 +122,6 @@ export default function FormRealisation({ update = false }) {
     if (update && items[0]) {
       if (items[0]._id === itemId) {
         setFiles(items[0].photos);
-        setCategories(items[0].categories);
         setItem(items[0]);
       }
     }
@@ -151,7 +133,6 @@ export default function FormRealisation({ update = false }) {
       toast.success("Ajouté avec succés !");
       reset({});
       setFiles([]);
-      setCategories([]);
       dispatch(resetItemSuccess());
     }
     if (successUpdate) {
@@ -271,31 +252,7 @@ export default function FormRealisation({ update = false }) {
           )}
         </div>
       </form>
-      <form
-        id={"form-category"}
-        className="form-category"
-        onSubmit={(e) => submitCategory(e)}
-      >
-        <h2>Catégories</h2>
-        <div className="category-input-container">
-          <input
-            value={categoryName}
-            className="category-input"
-            placeholder="Catégories"
-            onChange={(e) => setCategoryName(e.target.value)}
-          />
-          <button type="submit" form={"form-category"}>
-            +
-          </button>
-        </div>
-        <div className="categories-container">
-          {categories.map((item, i) => (
-            <span onClick={() => removeCategory(item)} key={i}>
-              {item}
-            </span>
-          ))}
-        </div>
-      </form>
+
       <div className="upload-zone-container">
         <h2>Photos</h2>
         <div className="apercu-zone many-images">

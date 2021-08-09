@@ -1,15 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../1-css/Nav.css";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { AiOutlineHome } from "react-icons/ai";
-import { FiInstagram, FiFacebook } from "react-icons/fi";
 import { BiLogOut } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import Logo from "./Logo";
 import { userLogoutHandler, userReset } from "../5-actions/userActions";
 
-export default function Nav() {
+export default function Nav(props) {
+  const [display, setDisplay] = useState("block");
   const dispatch = useDispatch();
 
   const displayNav = () => {
@@ -30,6 +29,16 @@ export default function Nav() {
   const { success: successLogin } = loginUser;
 
   useEffect(() => {
+    if (props.location.pathname === "/") {
+      setDisplay("none");
+    } else {
+      setDisplay("block");
+    }
+
+    return () => {};
+  }, [props.location]);
+
+  useEffect(() => {
     if (successLogout) {
       dispatch(userReset());
     }
@@ -37,7 +46,7 @@ export default function Nav() {
   }, [successLogout, successLogin]);
 
   return (
-    <div className="nav close">
+    <div className="nav close" style={{ display: display }}>
       <GiHamburgerMenu
         size={40}
         className="nav-burger"

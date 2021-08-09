@@ -1,0 +1,102 @@
+.home {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.home .photo-container {
+  height: 100vh;
+  width: 50%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.home .photo-container img {
+  width: 25rem;
+  height: 90%;
+  object-fit: cover;
+  margin: auto;
+}
+.home .background-top {
+  height: 50%;
+  width: 100%;
+  background-color: rgba(112, 112, 112, 0.1);
+}
+.home .background-bottom {
+  height: 50%;
+  width: 100%;
+  position: relative;
+}
+.home .background-bottom::before {
+  content: "";
+  height: 10px;
+  width: 6rem;
+  position: absolute;
+  top: 0;
+  left: 8rem;
+  background-color: black;
+}
+.home .background-bottom .text-container {
+  position: absolute;
+  bottom: 4rem;
+  left: 8rem;
+}
+.home .background-bottom .text-container * {
+  font-family: "Josefin Sans", sans-serif;
+  margin: 0;
+}
+
+.home .background-bottom .text-container h1 span {
+  text-transform: capitalize;
+}
+.home .background-bottom .text-container h1 {
+  font-size: 2.5em;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+.home .background-bottom .text-container h1 span {
+  font-weight: 200;
+  text-transform: capitalize;
+}
+
+.home .background-bottom .text-container p {
+  font-size: 2em;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin: 0;
+  letter-spacing: 1px;
+}
+.home .background-bottom .text-container p span {
+  font-weight: 200;
+}
+
+.home .background-bottom .text-container .button-container {
+  display: flex;
+  justify-content: flex-start;
+}
+.home .background-bottom .text-container .button-container a {
+  font-size: 1.5em;
+  font-weight: 300;
+  text-transform: capitalize;
+  margin: 4rem 0 2rem 0;
+  letter-spacing: 1px;
+  padding: 0.75rem 1rem;
+  background-color: transparent;
+  border: 1px solid black;
+  margin-right: 1rem;
+  transition: 0.25s;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+.home .background-bottom .text-container .button-container a:hover {
+  background-color: black;
+  color: #fff;
+}

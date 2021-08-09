@@ -6,6 +6,7 @@ import Nav from "./3-components/Nav";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const Home = lazy(() => import("./2-pages/Home"));
 const About = lazy(() => import("./2-pages/About"));
 const Missions = lazy(() => import("./2-pages/Missions"));
 const Realisations = lazy(() => import("./2-pages/Realisations"));
@@ -15,20 +16,14 @@ const Auth = lazy(() => import("./2-pages/Auth"));
 const Admin = lazy(() => import("./2-pages/Admin"));
 
 function App() {
-  useEffect(() => {
-    if (window.location.hash === "#/") {
-      window.location.replace("#/a-propos");
-    }
-    return () => {};
-  }, []);
-
   return (
     <Router>
       <div className="App">
-        <Nav />
         <Suspense fallback={<LoadingSpinnerFullPage />}>
+          <Route path="/" render={(props) => <Nav {...props} />} />
           <Switch>
-            <Route path="/a-propos" exact render={() => <About />} />
+            <Route path="/" exact render={(props) => <Home {...props} />} />
+            <Route path="/a-propos" render={() => <About />} />
             <Route path="/missions" render={() => <Missions />} />
             <Route
               path="/mes-realisations/:page?/:filters?"

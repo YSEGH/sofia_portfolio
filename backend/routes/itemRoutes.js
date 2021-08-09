@@ -19,7 +19,6 @@ router.post(
     const item = new Item({
       title: itemAdd.title,
       type: itemAdd.type,
-      categories: itemAdd.categories,
       description: itemAdd.description,
       date: itemAdd.date,
       place: itemAdd.place,
@@ -169,7 +168,6 @@ router.put(
 
       item.title = itemAdd.title;
       item.type = itemAdd.type;
-      item.categories = itemAdd.categories;
       item.description = itemAdd.description;
       item.date = itemAdd.date ? itemAdd.date : item.date;
       item.place = itemAdd.place;

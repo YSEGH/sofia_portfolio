@@ -5,7 +5,6 @@ const itemSchema = new mongoose.Schema({
   type: { type: String, default: "" },
   place: { type: String, default: "" },
   photos: { type: Array, default: [] },
-  categories: { type: Array, default: [] },
   description: { type: String, default: "" },
   date: { type: String, default: "" },
   surface: { type: String, default: "" },

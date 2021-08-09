@@ -4,7 +4,6 @@ const addItemHandler = (item) => async (dispatch) => {
   dispatch({ type: "ADD_ITEM_REQUEST" });
   try {
     const token = localStorage.getItem("token");
-    console.log(token);
     const { data } = await axios.post("/api/item/", item, {
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -20,7 +19,6 @@ const getItemsHandler =
     dispatch({ type: "GET_ITEM_REQUEST" });
     try {
       const token = localStorage.getItem("token");
-      console.log(itemId);
       const { data } = await axios.get(`/api/item`, {
         params: { filters, itemId, offset, per_page },
         headers: { Authorization: `Bearer ${token}` },

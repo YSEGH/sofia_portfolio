@@ -2,17 +2,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "../1-css/Realisations.css";
-import FilterContainer from "../3-components/FilterContainer";
 import Item from "../3-components/Item";
 import {
   LoadingSpinnerFullPage,
   LoadingSVG,
 } from "../3-components/LoadingComponents";
-import {
-  getFiltersHandler,
-  getItemsHandler,
-  resetGetItem,
-} from "../5-actions/itemActions";
+import { getItemsHandler, resetGetItem } from "../5-actions/itemActions";
 
 export default function Realisations(props) {
   const dispatch = useDispatch();
@@ -47,8 +42,6 @@ export default function Realisations(props) {
 
   return (
     <div className="page realisations">
-      <FilterContainer props={props} />
-
       <div className="items-container">
         {items.map((item, i) => (
           <Item item={item} key={i} />

@@ -4,7 +4,7 @@ import "../1-css/Logo.css";
 
 export default function Logo() {
   return (
-    <Link className="logo" to="/a-propos">
+    <Link className="logo" to="/">
       <h1>
         Seghrouchni <span>Sofia</span>
       </h1>
