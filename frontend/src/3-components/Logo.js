@@ -6,7 +6,7 @@ export default function Logo() {
   return (
     <Link className="logo" to="/">
       <h1>
-        Seghrouchni <span>Sofia</span>
+        Seghrouchni<span>Sofia</span>
       </h1>
       <p>
         Architecture

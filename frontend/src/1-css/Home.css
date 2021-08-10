@@ -17,6 +17,7 @@
 }
 .home .photo-container img {
   width: 25rem;
+  max-width: 90%;
   height: 90%;
   object-fit: cover;
   margin: auto;
@@ -42,7 +43,7 @@
 }
 .home .background-bottom .text-container {
   position: absolute;
-  bottom: 4rem;
+  top: 4rem;
   left: 8rem;
 }
 .home .background-bottom .text-container * {
@@ -50,12 +51,9 @@
   margin: 0;
 }
 
-.home .background-bottom .text-container h1 span {
-  text-transform: capitalize;
-}
 .home .background-bottom .text-container h1 {
   font-size: 2.5em;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 3px;
   text-transform: uppercase;
   margin: 0;
@@ -63,18 +61,17 @@
 }
 .home .background-bottom .text-container h1 span {
   font-weight: 200;
-  text-transform: capitalize;
 }
 
 .home .background-bottom .text-container p {
   font-size: 2em;
-  font-weight: 400;
+  font-weight: 300;
   text-transform: capitalize;
   margin: 0;
   letter-spacing: 1px;
 }
 .home .background-bottom .text-container p span {
-  font-weight: 200;
+  font-weight: 100;
 }
 
 .home .background-bottom .text-container .button-container {
@@ -82,12 +79,12 @@
   justify-content: flex-start;
 }
 .home .background-bottom .text-container .button-container a {
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: 300;
-  text-transform: capitalize;
+  text-transform: uppercase;
   margin: 4rem 0 2rem 0;
   letter-spacing: 1px;
-  padding: 0.75rem 1rem;
+  padding: 1rem 1rem;
   background-color: transparent;
   border: 1px solid black;
   margin-right: 1rem;
@@ -95,8 +92,81 @@
   cursor: pointer;
   text-decoration: none;
   color: black;
+  max-width: 90%;
+  text-align: center;
 }
+.home .background-bottom .text-container .button-container a:nth-child(1) {
+  background-color: #8a8a8a;
+  border: 1px solid #8a8a8a;
+  color: #fff;
+}
+
 .home .background-bottom .text-container .button-container a:hover {
+  border: 1px solid black;
   background-color: black;
   color: #fff;
+}
+@media screen and (max-width: 1050px) {
+  .home .background-bottom::before {
+    left: 1rem;
+  }
+  .home .background-bottom .text-container {
+    left: 1rem;
+  }
+  .home .background-bottom .text-container h1 {
+    font-size: 2em;
+  }
+  .home .background-bottom .text-container p {
+    font-size: 1.5em;
+  }
+  .home .background-bottom .text-container .button-container a {
+    font-size: 0.9em;
+  }
+}
+@media screen and (max-width: 800px) {
+  .home .photo-container {
+    height: 50vh;
+    width: 100%;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: auto;
+  }
+  .home .background-bottom::before {
+    left: 5%;
+  }
+  .home .background-bottom .text-container {
+    left: 5%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .home .background-bottom::before {
+    left: 0;
+  }
+  .home .background-bottom .text-container {
+    left: 0;
+    width: 100vw;
+  }
+  .home .background-bottom .text-container h1 {
+    width: 100%;
+    font-size: 1.5em;
+    text-align: center;
+  }
+  .home .background-bottom .text-container p {
+    width: 100%;
+    text-align: center;
+    font-size: 1.4em;
+  }
+  .home .background-bottom .text-container .button-container {
+    margin-top: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .home .background-bottom .text-container .button-container a {
+    width: 100%;
+    font-size: 0.75em;
+    margin: 1rem 0;
+    margin-right: 0;
+  }
 }
