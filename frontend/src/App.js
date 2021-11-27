@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from "react";
+import React, { Suspense, lazy } from "react";
 import "./1-css/App.css";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { LoadingSpinnerFullPage } from "./3-components/LoadingComponents";
