@@ -1,28 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../1-css/Home.css";
 
 export default function Home() {
+  useEffect(() => {
+    document.title = "SOFIA SEGHROUCHNI - Architecte paysagiste";
+
+    return () => {};
+  }, []);
+
   return (
     <div className="home">
-      <div className="background-top"></div>
-      <div className="background-bottom">
-        <div className="text-container">
-          <h1>
-            Seghrouchni<span>Sofia</span>
-          </h1>
-          <p>
-            Architecture
-            <span> & Paysagisme</span>
-          </p>
-          <div className="button-container">
-            <Link to="/a-propos">A propos</Link>
-            <Link to="/mes-realisations">Mes réalisations</Link>
-          </div>
-        </div>
-      </div>
       <div className="photo-container">
         <img src="/static-files/archi.jpg" />
+      </div>
+      <div className="text-container">
+        <h1>
+          <span>Sofia</span>
+          <br />
+          Seghrouchni
+        </h1>
+        <p>
+          Architecture
+          <span> & Paysagisme</span>
+        </p>
       </div>
     </div>
   );

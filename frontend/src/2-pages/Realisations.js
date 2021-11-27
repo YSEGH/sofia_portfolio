@@ -29,7 +29,7 @@ export default function Realisations(props) {
   };
 
   useEffect(() => {
-    document.title = "2SAP - Mes réalisations";
+    document.title = "SOFIA SEGHROUCHNI - Réalisations";
     return () => {};
   }, []);
 

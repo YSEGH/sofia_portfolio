@@ -9,7 +9,8 @@
   align-items: center;
   justify-content: center;
 }
-.form-admin h2 {
+.form-admin h2,
+.form-admin p.subtitle {
   font-size: 2em;
   margin: 4rem auto 2rem auto;
   font-family: "Josefin Sans", sans-serif;
@@ -19,7 +20,11 @@
   max-width: 95%;
   color: #303030;
 }
-
+.form-admin p.subtitle {
+  font-size: 1em;
+  margin: 0rem auto 2rem auto;
+  font-weight: 300;
+}
 .form-admin form {
   display: flex;
   flex-wrap: wrap;
@@ -85,8 +90,9 @@
   border: none;
   cursor: pointer;
   transition: 0.25s;
-  font: 300 2rem "Poppins";
+  font: 200 1.5rem "Poppins";
   margin: 5rem auto 3rem auto;
+  text-transform: uppercase;
 }
 
 .form-admin button:hover {

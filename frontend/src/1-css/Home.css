@@ -1,172 +1,134 @@
 .home {
   width: 100vw;
-  height: 100vh;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  flex: auto;
 }
 .home .photo-container {
-  height: 100vh;
-  width: 50%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
+  width: fit-content;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin: 0 5rem;
 }
 .home .photo-container img {
-  width: 25rem;
+  width: 28rem;
   max-width: 90%;
-  height: 90%;
+  height: 80%;
   object-fit: cover;
   margin: auto;
+  border-radius: 40px;
 }
-.home .background-top {
-  height: 50%;
-  width: 100%;
-  background-color: rgba(112, 112, 112, 0.1);
+
+.home .text-container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
-.home .background-bottom {
-  height: 50%;
-  width: 100%;
-  position: relative;
-}
-.home .background-bottom::before {
-  content: "";
-  height: 10px;
-  width: 6rem;
-  position: absolute;
-  top: 0;
-  left: 8rem;
-  background-color: black;
-}
-.home .background-bottom .text-container {
-  position: absolute;
-  top: 4rem;
-  left: 8rem;
-}
-.home .background-bottom .text-container * {
+.home .text-container * {
   font-family: "Josefin Sans", sans-serif;
   margin: 0;
 }
 
-.home .background-bottom .text-container h1 {
-  font-size: 2.5em;
+.home .text-container h1 {
+  font-size: 6em;
   font-weight: 400;
   letter-spacing: 3px;
   text-transform: uppercase;
   margin: 0;
   margin-bottom: 1rem;
 }
-.home .background-bottom .text-container h1 span {
+.home .text-container h1 span {
   font-weight: 200;
+  font-style: italic;
 }
 
-.home .background-bottom .text-container p {
-  font-size: 2em;
-  font-weight: 300;
+.home .text-container p {
+  font-size: 3.5em;
+  font-weight: 200;
   text-transform: capitalize;
+  font-style: italic;
   margin: 0;
+  margin-top: 3rem;
   letter-spacing: 1px;
+  color: #797979;
 }
-.home .background-bottom .text-container p span {
+.home .text-container p span {
   font-weight: 100;
+  color: #8a8a8a;
 }
 
-.home .background-bottom .text-container .button-container {
-  display: flex;
-  justify-content: flex-start;
-}
-.home .background-bottom .text-container .button-container a {
-  font-size: 1em;
-  font-weight: 300;
-  text-transform: uppercase;
-  margin: 4rem 0 2rem 0;
-  letter-spacing: 1px;
-  padding: 1rem 1rem;
-  background-color: transparent;
-  border: 1px solid black;
-  margin-right: 1rem;
-  transition: 0.25s;
-  cursor: pointer;
-  text-decoration: none;
-  color: black;
-  max-width: 90%;
-  text-align: center;
-}
-.home .background-bottom .text-container .button-container a:nth-child(1) {
-  background-color: #8a8a8a;
-  border: 1px solid #8a8a8a;
-  color: #fff;
-}
-
-.home .background-bottom .text-container .button-container a:hover {
-  border: 1px solid black;
-  background-color: black;
-  color: #fff;
-}
 @media screen and (max-width: 1050px) {
-  .home .background-bottom::before {
-    left: 1rem;
+  .home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  .home .background-bottom .text-container {
-    left: 1rem;
+  .home .photo-container {
+    width: 100vw;
+    margin: 0;
+    height: fit-content;
+    padding-top: 5rem;
   }
-  .home .background-bottom .text-container h1 {
-    font-size: 2em;
+  .home .photo-container img {
+    width: 70vw;
+    max-width: 90%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 40px;
   }
-  .home .background-bottom .text-container p {
-    font-size: 1.5em;
+  .home .text-container {
+    margin-top: 3rem;
+    width: 100vw;
+    justify-content: flex-start;
+    align-items: center;
+    flex: auto;
   }
-  .home .background-bottom .text-container .button-container a {
-    font-size: 0.9em;
+  .home .text-container h1 {
+    text-align: center;
+    font-size: 4em;
+  }
+  .home .text-container p {
+    text-align: center;
+    font-size: 3em;
   }
 }
 @media screen and (max-width: 800px) {
   .home .photo-container {
-    height: 50vh;
-    width: 100%;
-    right: 0;
-    left: 0;
-    top: 0;
-    bottom: auto;
   }
-  .home .background-bottom::before {
-    left: 5%;
-  }
-  .home .background-bottom .text-container {
-    left: 5%;
+
+  .home .text-container {
   }
 }
 @media screen and (max-width: 500px) {
-  .home .background-bottom::before {
-    left: 0;
+  .home .photo-container img {
+    width: 80vw;
+    height: 20rem;
   }
-  .home .background-bottom .text-container {
-    left: 0;
+  .home .text-container {
     width: 100vw;
   }
-  .home .background-bottom .text-container h1 {
+  .home .text-container h1 {
     width: 100%;
+    font-size: 2.5em;
+    text-align: center;
+  }
+  .home .text-container p {
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+  }
+}
+@media screen and (max-width: 350px) {
+  .home .photo-container img {
+    width: 90vw;
+  }
+  .home .text-container h1 {
+    font-size: 2em;
+  }
+  .home .text-container p {
     font-size: 1.5em;
-    text-align: center;
-  }
-  .home .background-bottom .text-container p {
-    width: 100%;
-    text-align: center;
-    font-size: 1.4em;
-  }
-  .home .background-bottom .text-container .button-container {
-    margin-top: 2rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .home .background-bottom .text-container .button-container a {
-    width: 100%;
-    font-size: 0.75em;
-    margin: 1rem 0;
-    margin-right: 0;
   }
 }

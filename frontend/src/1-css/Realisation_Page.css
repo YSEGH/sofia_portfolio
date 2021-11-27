@@ -74,6 +74,10 @@
   position: relative;
   pointer-events: all;
   cursor: pointer;
+  transition: 0.25s transform;
+}
+.realisation-page .photos-container .photo-container .photo-content:hover {
+  transform: scale(1.025);
 }
 .realisation-page .photos-container .photo-container .photo-content img {
   height: 100%;

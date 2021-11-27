@@ -131,8 +131,8 @@ export default function FormRealisation({ update = false }) {
   useEffect(() => {
     if (successAdd) {
       toast.success("Ajouté avec succés !");
-      reset({});
-      setFiles([]);
+      /* reset({});
+      setFiles([]); */
       dispatch(resetItemSuccess());
     }
     if (successUpdate) {
@@ -179,7 +179,7 @@ export default function FormRealisation({ update = false }) {
             placeholder="Ex. Aménagement, Réhabilitation"
             defaultValue={item.type}
           />
-          {errors.title && (
+          {errors.type && (
             <span className="danger">Merci de saisir le type.</span>
           )}
         </div>
@@ -190,7 +190,7 @@ export default function FormRealisation({ update = false }) {
             placeholder="Ex. Marseille, France"
             defaultValue={item.place}
           />
-          {errors.title && (
+          {errors.place && (
             <span className="danger">Merci de saisir le lieu.</span>
           )}
         </div>
@@ -201,7 +201,7 @@ export default function FormRealisation({ update = false }) {
             placeholder="Ex. Particulier, Professionnel"
             defaultValue={item.client}
           />
-          {errors.title && (
+          {errors.client && (
             <span className="danger">Merci de saisir la nature du client.</span>
           )}
         </div>
@@ -213,7 +213,7 @@ export default function FormRealisation({ update = false }) {
             type="date"
             defaultValue={item.date}
           />
-          {errors.title && (
+          {errors.date && (
             <span className="danger">Merci de saisir la date.</span>
           )}
         </div>
@@ -224,7 +224,7 @@ export default function FormRealisation({ update = false }) {
             placeholder="Surface"
             defaultValue={item.surface}
           />
-          {errors.title && (
+          {errors.surface && (
             <span className="danger">Merci de saisir la surface.</span>
           )}
         </div>
@@ -235,7 +235,7 @@ export default function FormRealisation({ update = false }) {
             placeholder="Ex. Terminé"
             defaultValue={item.statut}
           />
-          {errors.title && (
+          {errors.statut && (
             <span className="danger">Merci de saisir le statut.</span>
           )}
         </div>
@@ -245,7 +245,7 @@ export default function FormRealisation({ update = false }) {
             {...register("description", { required: !update ? true : false })}
             defaultValue={update ? item.description : ""}
           />
-          {errors.title && (
+          {errors.description && (
             <span className="danger">
               Merci de saisir un texte de présentation.
             </span>
@@ -255,6 +255,7 @@ export default function FormRealisation({ update = false }) {
 
       <div className="upload-zone-container">
         <h2>Photos</h2>
+        <p className="subtitle">La dernière image servira d'illustration.</p>
         <div className="apercu-zone many-images">
           {files.length > 0 ? (
             files.map((file, i) =>

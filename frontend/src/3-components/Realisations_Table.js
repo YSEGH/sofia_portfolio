@@ -77,13 +77,12 @@ export default function Realisations_Table() {
           },
           {
             render: (RowData) => (
-              <Link
-                to={null}
+              <button
                 className="button-delete-contenu"
                 onClick={() => onClickDeleteItem(RowData._id)}
               >
                 <MdDelete size={30} />
-              </Link>
+              </button>
             ),
           },
         ]}

@@ -12,11 +12,11 @@ export default function About() {
   const { loading, infos, error } = getInfos;
 
   useEffect(() => {
-    document.title = "2SAP - A propos";
-    dispatch(getInfosHandler());
-    return () => {
-      dispatch(resetInfos());
-    };
+    document.title = "SOFIA SEGHROUCHNI - A propos";
+    if (Object.keys(infos).length === 0) {
+      dispatch(getInfosHandler());
+    }
+    return () => {};
   }, []);
 
   return (

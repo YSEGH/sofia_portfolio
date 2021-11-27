@@ -2,6 +2,7 @@
   height: 100%;
   width: 50vw;
   text-align: center;
+  margin-top: 5rem;
   padding-inline: 5rem;
   display: flex;
   flex-direction: column;
@@ -11,6 +12,7 @@
 .form-contact .form-text-container h1 {
   font-weight: 600;
   margin: 0;
+  margin-bottom: 1rem;
 }
 .form-contact .form-text-container p {
   font-weight: 200;
@@ -27,13 +29,14 @@
   width: 45%;
   height: auto;
   border: none;
-  font-family: "Poppins", sans-serif;
+  font-family: "Spectral", sans-serif;
+  font-size: 14px;
   padding: 0.75rem;
   background-color: #fff;
   border-image: initial;
   box-sizing: border-box;
   border: 1px solid rgba(112, 112, 112, 0.2);
-  border-radius: 5px;
+  border-radius: 2px;
   color: #707070;
 }
 .form-contact .inputs-container input::placeholder,
@@ -45,41 +48,42 @@
   width: 100%;
   height: 8.5rem;
   border: none;
-  font-family: "Poppins", sans-serif;
+  font-family: "Spectral", sans-serif;
+  font-size: 14px;
   padding: 1rem;
   background-color: #fff;
   border-image: initial;
   box-sizing: border-box;
   border: 1px solid rgba(112, 112, 112, 0.2);
-  border-radius: 5px;
+  border-radius: 2px;
   color: #707070;
 }
 .form-contact button {
   height: 3.4rem;
   width: 100%;
-  border-radius: 60px;
   border: none;
-  font: 400 14px "Poppins", sans-serif;
-  color: #707070;
+  font: 300 20px "Spectral", sans-serif;
+  color: black;
   margin: 2rem auto;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #fff;
-  border: 1px solid rgba(112, 112, 112, 0.1);
+  border: 1px solid black;
   cursor: pointer;
   transition: 0.25s background-color;
   box-sizing: border-box;
+  border-radius: 2px;
 }
 .form-contact button:hover {
-  background-color: rgba(112, 112, 112, 0.1);
+  background-color: black;
+  color: #fff;
   border: none;
 }
 @media screen and (max-width: 960px) {
   .form-contact {
     height: fit-content;
     width: fit-content;
-    margin-top: 0;
     padding-inline: 1rem;
     justify-content: flex-start;
   }
@@ -106,13 +110,13 @@
     width: 80%;
   }
   .form-contact .inputs-container input {
-    width: 80%;
+    width: 100%;
   }
   .form-contact textarea {
-    width: 80%;
+    width: 100%;
   }
   .form-contact button {
-    width: 80%;
+    width: 100%;
   }
 }
 @media screen and (max-width: 320px) {
@@ -120,12 +124,12 @@
     width: 90%;
   }
   .form-contact .inputs-container input {
-    width: 90%;
+    width: 100%;
   }
   .form-contact textarea {
-    width: 90%;
+    width: 100%;
   }
   .form-contact button {
-    width: 90%;
+    width: 100%;
   }
 }

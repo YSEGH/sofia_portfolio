@@ -9,9 +9,13 @@ import Realisations_Table from "../3-components/Realisations_Table";
 
 export default function Admin(props) {
   useEffect(() => {
+    console.log(props);
+    /* console.log({
+      pathname: props.location.pathname,
+    });
     if (props.location.pathname === "/admin/mon-espace") {
       props.history.push("/admin/mon-espace/mon-compte");
-    }
+    } */
     return () => {};
   }, []);
 

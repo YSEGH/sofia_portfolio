@@ -3,7 +3,7 @@ import "../1-css/Missions.css";
 
 export default function Missions() {
   useEffect(() => {
-    document.title = "2SAP - Missions";
+    document.title = "SOFIA SEGHROUCHNI - Missions";
     return () => {};
   }, []);
   return (

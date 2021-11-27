@@ -8,7 +8,6 @@ import Logo from "./Logo";
 import { userLogoutHandler, userReset } from "../5-actions/userActions";
 
 export default function Nav(props) {
-  const [display, setDisplay] = useState("block");
   const dispatch = useDispatch();
 
   const displayNav = () => {
@@ -29,16 +28,6 @@ export default function Nav(props) {
   const { success: successLogin } = loginUser;
 
   useEffect(() => {
-    if (props.location.pathname === "/") {
-      setDisplay("none");
-    } else {
-      setDisplay("block");
-    }
-
-    return () => {};
-  }, [props.location]);
-
-  useEffect(() => {
     if (successLogout) {
       dispatch(userReset());
     }
@@ -46,68 +35,53 @@ export default function Nav(props) {
   }, [successLogout, successLogin]);
 
   return (
-    <div className="nav close" style={{ display: display }}>
-      <GiHamburgerMenu
-        size={40}
-        className="nav-burger"
-        onClick={() => displayNav()}
-      />
+    <div className="nav close">
+      <div className="nav-burger" onClick={() => displayNav()}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <div className="nav-content">
-        <Logo />
+        {localStorage.getItem("token") ? (
+          <ul className="nav-ul admin">
+            <li>
+              <NavLink
+                activeClassName="active"
+                to="/admin/mon-espace"
+                style={{ fontWeight: 200 }}
+              >
+                Espace Administrateur
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                activeClassName="logout"
+                to="/a-propos"
+                onClick={() => dispatch(userLogoutHandler())}
+                exact
+                title="Déconnexion"
+              >
+                <BiLogOut size={25} />
+              </NavLink>
+            </li>
+          </ul>
+        ) : null}
         <ul className="nav-ul">
           <li>
             <NavLink activeClassName="active" to="/a-propos" exact>
               A propos
             </NavLink>
           </li>
-          <span>|</span>
           <li>
             <NavLink activeClassName="active" to="/missions">
               Missions
             </NavLink>
           </li>
-          <span>|</span>
           <li>
             <NavLink activeClassName="active" to="/mes-realisations">
-              Mes réalisations
+              Réalisations
             </NavLink>
           </li>
-          <span>|</span>
-          <li>
-            <NavLink activeClassName="active" to="/contact">
-              Contact
-            </NavLink>
-          </li>
-
-          {localStorage.getItem("token") ? (
-            <>
-              <span>|</span>
-              <li>
-                <NavLink
-                  activeClassName="active"
-                  to="/admin/mon-espace"
-                  style={{ fontWeight: 200 }}
-                >
-                  Admin
-                </NavLink>
-              </li>
-            </>
-          ) : null}
-          {localStorage.getItem("token") ? (
-            <>
-              <span>|</span>
-              <li>
-                <NavLink
-                  activeClassName="logout"
-                  to="/a-propos"
-                  onClick={() => dispatch(userLogoutHandler())}
-                  exact
-                >
-                  <BiLogOut size={25} />
-                </NavLink>
-              </li>
-            </>
-          ) : null}
         </ul>
         {/* 
         <div className="network-container">

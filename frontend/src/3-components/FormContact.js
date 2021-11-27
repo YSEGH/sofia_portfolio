@@ -57,7 +57,7 @@ export default function FormContact() {
       <div className="form-text-container">
         <h1>Plus d'infos ?</h1>
         <p>
-          N’hésitez pas à me contacter pour toute question, je vous répondrai
+          Pour toute demande d'informations, n’hésitez pas à me contacter, je vous répondrai
           dans les meilleurs délais.
         </p>
       </div>
@@ -70,7 +70,7 @@ export default function FormContact() {
 
         <input {...register("phone")} placeholder="Téléphone (optionnel)" />
       </div>
-      <textarea {...register("message")} placeholder="Message" />
+      <textarea {...register("message")} placeholder="Votre message ..." />
       <button type="submit">Envoyer</button>
     </form>
   );

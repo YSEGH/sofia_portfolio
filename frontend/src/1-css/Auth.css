@@ -21,8 +21,10 @@
   font-family: "Poppins", sans-serif;
   padding: 0.5rem;
   color: #303030;
+  outline: none;
 }
 .auth input::placeholder {
+  font-weight: 300;
   color: rgba(112, 112, 112, 0.4);
 }
 .auth button {
@@ -30,7 +32,7 @@
   height: 3rem;
   background-color: #ff0513;
   border: none;
-  font: 400 18px "Poppins", sans-serif;
+  font: 200 18px "Poppins", sans-serif;
   text-transform: uppercase;
   display: flex;
   align-items: center;

@@ -1,5 +1,6 @@
 .realisations {
-  margin-bottom: 2rem;
+  margin-bottom: 0;
+  padding: 3rem 0;
 }
 .items-container {
   margin-top: 2rem;
@@ -7,7 +8,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 0 1rem;
+  padding: 1rem;
 }
 .show-more-div {
   display: flex;
@@ -16,17 +17,17 @@
   margin: 4rem auto;
 }
 .show-more-div button {
-  height: 4rem;
+  height: fit-content;
   width: 10rem;
   padding: 1rem;
-  font: 400 18px "Josefin Sans", sans-serif;
+  font: 300 18px "Josefin Sans", sans-serif;
   background-color: transparent;
-  border: 1px solid #303030;
+  border: 1px solid rgba(0, 0, 0, 0.5);
   cursor: pointer;
   transition: 0.25s;
 }
 .show-more-div button:hover {
-  background-color: #303030;
+  background-color: black;
   border: 1px solid #fff;
   color: #fff;
 }
