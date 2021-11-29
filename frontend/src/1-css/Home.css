@@ -46,7 +46,7 @@
 }
 
 .home .text-container p {
-  font-size: 3.5em;
+  font-size: 3em;
   font-weight: 200;
   text-transform: capitalize;
   font-style: italic;
@@ -59,7 +59,14 @@
   font-weight: 100;
   color: #8a8a8a;
 }
-
+@media screen and (max-width: 1500px) {
+  .home .text-container h1 {
+    font-size: 5em;
+  }
+  .home .text-container p {
+    font-size: 2.5em;
+  }
+}
 @media screen and (max-width: 1050px) {
   .home {
     display: flex;

@@ -30,7 +30,7 @@
   right: 2rem;
   height: 5rem;
   width: 5rem;
-  background-color: rgba(206, 206, 206, 0.432);
+  background-color: transparent;
   border-radius: 10px;
 }
 .small-component.full-page.loading {

@@ -1,6 +1,7 @@
 .realisation-page {
   display: flex;
   flex-direction: column;
+  padding-bottom: 3rem;
 }
 /* Text container */
 .realisation-page .text-container {
@@ -104,6 +105,7 @@
   background-color: rgb(112, 112, 112, 0.2);
   cursor: auto;
   pointer-events: all;
+  transform: none;
 }
 .realisation-page .photos-container .photo-container .photo-content.active img {
   height: 90%;
@@ -131,7 +133,7 @@
 
 @media screen and (max-width: 1050px) {
   .realisation-page {
-    padding: 0 1rem;
+    padding-inline: 1rem;
   }
   .realisation-page .text-container {
     width: 80%;

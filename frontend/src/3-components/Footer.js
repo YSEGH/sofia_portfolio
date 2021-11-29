@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BiPhone, BiAt, BiMap } from "react-icons/bi";
+import { ImWarning } from "react-icons/im";
 import { GiPositionMarker } from "react-icons/gi";
 import "../1-css/Footer.css";
 import { getInfosHandler, resetInfos } from "../5-actions/infoActions";
@@ -33,6 +34,10 @@ export default function Contact() {
           <p>
             <BiPhone size={20} />
             {infos.phone}
+          </p>
+          <p className="construction-flag">
+            <ImWarning />
+            Site en construction
           </p>
         </div>
       )}
