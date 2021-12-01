@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="home">
       <div className="photo-container">
-        <img src="/static-files/archi.jpg" />
+        <img src="/static-files/archi1.jpg" />
       </div>
       <div className="text-container">
         <h1>

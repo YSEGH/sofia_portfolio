@@ -20,7 +20,7 @@ function App() {
     <Router>
       <div className="App">
         <Route path="/" render={(props) => <Nav {...props} />} />
-        <Suspense fallback={<LoadingSpinnerFullPage />}>
+        <Suspense fallback={<div></div>}>
           <Switch>
             <Route path="/" exact render={(props) => <Home {...props} />} />
             <Route path="/a-propos" render={() => <About />} />
