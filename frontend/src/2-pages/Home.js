@@ -10,19 +10,16 @@ export default function Home() {
   }, []);
   return (
     <div className="home">
-      <div className="text-container">
-        <h1>
-          <span>Sofia</span>
-          Seghrouchni
-        </h1>
-        <p>
-          Architecture
-          <span> & Paysagisme</span>
-        </p>
-      </div>
-      <div className="photo-container">
-        <img src="/static-files/skyline_marseille_lg.png" />
-      </div>
+      <h1>
+        <span>Sofia</span>
+        Seghrouchni
+      </h1>
+
+      <img src="/static-files/skyline_marseille_lg.png" />
+      <p>
+        Architecture
+        <span> & Paysagisme</span>
+      </p>
     </div>
   );
 }

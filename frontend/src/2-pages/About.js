@@ -12,7 +12,13 @@ export default function About() {
   const { loading, infos, error } = getInfos;
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (!loading) {
+      window.scrollTo(0, 0);
+    }
+    return () => {};
+  }, [loading]);
+
+  useEffect(() => {
     document.title = "SOFIA SEGHROUCHNI - A propos";
     if (Object.keys(infos).length === 0) {
       dispatch(getInfosHandler());

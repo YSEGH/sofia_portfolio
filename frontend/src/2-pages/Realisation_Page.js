@@ -15,12 +15,18 @@ export default function Realisation_Page() {
   const { loading: loadingGet, items, error: errorGet } = getItem;
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     dispatch(getItemsHandler(null, null, null, itemId));
     return () => {
       dispatch(resetGetItem());
     };
   }, []);
+
+  useEffect(() => {
+    if (!loadingGet) {
+      window.scrollTo(0, 0);
+    }
+    return () => {};
+  }, [loadingGet]);
 
   useEffect(() => {
     if (items[0] && items[0]._id === itemId) {

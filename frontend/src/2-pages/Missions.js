@@ -7,6 +7,7 @@ export default function Missions() {
     document.title = "SOFIA SEGHROUCHNI - Missions";
     return () => {};
   }, []);
+
   return (
     <div className="page missions">
       <h1>
