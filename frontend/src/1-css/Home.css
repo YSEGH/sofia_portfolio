@@ -1,43 +1,44 @@
 .home {
   width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   flex: auto;
+  position: relative;
 }
+
 .home .photo-container {
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin: 0;
 }
 .home .photo-container img {
-  width: 100%;
+  width: 35%;
   height: 100%;
-  object-fit: cover;
-  object-position: bottom center;
+  object-fit: contain;
   margin: auto;
 }
 
 .home .text-container {
-  width: 60%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  padding-top: 5rem;
 }
 .home .text-container * {
   font-family: "Josefin Sans", sans-serif;
   margin: 0;
 }
-
 .home .text-container h1 {
-  font-size: 6em;
-  font-weight: 400;
+  font-size: 4em;
+  font-weight: 600;
   letter-spacing: 3px;
   text-transform: uppercase;
   margin: 0;
-  margin-bottom: 1rem;
 }
 .home .text-container h1 span {
   font-weight: 200;
@@ -45,141 +46,58 @@
 }
 
 .home .text-container p {
-  font-size: 3em;
+  font-size: 2em;
   font-weight: 200;
   text-transform: capitalize;
   font-style: italic;
   margin: 3rem 0;
   letter-spacing: 1px;
-  color: #797979;
+  color: #000000;
+  text-align: center;
 }
 .home .text-container p span {
   font-weight: 100;
-  color: #8a8a8a;
+  color: #000000;
 }
 @media screen and (max-width: 1500px) {
   .home .photo-container {
-    position: relative;
-
     margin: 0;
     padding: 0 2rem;
   }
-  .home .photo-container:after {
-    position: absolute;
-    content: "";
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0) 66%,
-      rgba(255, 255, 255, 1) 100%
-    );
-  }
-  .home .photo-container img {
-    width: 100%;
-    max-width: 90%;
-    object-fit: cover;
-    margin: auto;
-  }
-  .home .text-container h1 {
-    font-size: 5em;
-  }
-  .home .text-container p {
-    font-size: 2.5em;
-  }
-}
-@media screen and (max-width: 1400px) {
-  .home .photo-container {
-    padding: 0 1rem;
-  }
-
-  .home .photo-container img {
-    max-width: none;
-  }
-  .home .text-container {
-    padding: 0 1rem;
-  }
-  .home .text-container h1 {
-    font-size: 4em;
-  }
-  .home .text-container p {
-    font-size: 2.5em;
-  }
 }
 @media screen and (max-width: 1050px) {
-  .home {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .home .photo-container {
-    width: 100vw;
-    margin: 0;
-    height: fit-content;
-    padding: 0;
-    padding-top: 5rem;
-  }
-  .home .photo-container:after {
-    display: none;
-  }
   .home .photo-container img {
-    width: 90vw;
-    max-width: 90%;
-    object-fit: cover;
-    border-right: none;
-  }
-  .home .text-container {
-    margin-top: 3rem;
-    width: 100vw;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0;
+    width: 70%;
   }
   .home .text-container h1 {
-    text-align: center;
     font-size: 4em;
   }
   .home .text-container p {
-    text-align: center;
     font-size: 3em;
   }
 }
 @media screen and (max-width: 800px) {
-  .home .photo-container {
+  .home .text-container h1 {
+    font-size: 3em;
   }
-
-  .home .text-container {
+  .home .text-container p {
+    font-size: 2em;
   }
 }
 @media screen and (max-width: 500px) {
   .home .photo-container img {
-    width: 90vw;
-    height: 20rem;
-  }
-  .home .text-container {
-    width: 100vw;
-  }
-  .home .text-container h1 {
     width: 100%;
-    font-size: 2.5em;
-    text-align: center;
-  }
-  .home .text-container p {
-    width: 100%;
-    text-align: center;
-    font-size: 1.75em;
-    margin-top: 2rem;
-  }
-}
-@media screen and (max-width: 350px) {
-  .home .photo-container img {
-    width: 90vw;
   }
   .home .text-container h1 {
     font-size: 2em;
+  }
+  .home .text-container p {
+    font-size: 1.75em;
+  }
+}
+@media screen and (max-width: 400px) {
+  .home .text-container h1 {
+    font-size: 1.5em;
   }
   .home .text-container p {
     font-size: 1.5em;
