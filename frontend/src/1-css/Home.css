@@ -30,7 +30,6 @@
   padding-top: 5rem;
 }
 .home .text-container * {
-  font-family: "Josefin Sans", sans-serif;
   margin: 0;
 }
 .home .text-container h1 {
@@ -39,6 +38,7 @@
   letter-spacing: 3px;
   text-transform: uppercase;
   margin: 0;
+  font-family: "Josefin Sans", sans-serif;
 }
 .home .text-container h1 span {
   font-weight: 200;
@@ -46,6 +46,7 @@
 }
 
 .home .text-container p {
+  font-family: "Spectral", serif;
   font-size: 2em;
   font-weight: 200;
   text-transform: capitalize;
