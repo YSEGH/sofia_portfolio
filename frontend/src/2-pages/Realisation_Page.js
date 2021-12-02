@@ -15,6 +15,7 @@ export default function Realisation_Page() {
   const { loading: loadingGet, items, error: errorGet } = getItem;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(getItemsHandler(null, null, null, itemId));
     return () => {
       dispatch(resetGetItem());

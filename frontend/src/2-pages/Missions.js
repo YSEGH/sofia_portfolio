@@ -3,6 +3,7 @@ import "../1-css/Missions.css";
 
 export default function Missions() {
   useEffect(() => {
+    window.scrollTo(0, 0);
     document.title = "SOFIA SEGHROUCHNI - Missions";
     return () => {};
   }, []);
