@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
 }
 .about h1 {
   font-family: "Josefin Sans", sans-serif;

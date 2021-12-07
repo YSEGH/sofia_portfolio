@@ -29,6 +29,8 @@ export default function Realisations(props) {
   };
 
   useEffect(() => {
+    document.getElementsByTagName("meta")[3].content =
+      "Vous pouvez consulter l'ensemble des réalisations de SOFIA SEGHROUCHNI à travers cette rubrique.";
     document.title = "SOFIA SEGHROUCHNI - Réalisations";
     return () => {};
   }, []);

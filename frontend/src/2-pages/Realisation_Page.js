@@ -54,49 +54,51 @@ export default function Realisation_Page() {
   };
 
   return (
-    item && (
-      <div className="page realisation-page">
-        <div className="text-container">
-          <h1>{item.title}</h1>
-          <div className="photo-container">
-            <img
-              src={item.photos[item.photos.length - 1].src}
-              alt={item.title}
-            />
-          </div>
-          <p>{item.description}</p>
-          <ul>
-            <li>
-              Lieu : <span>{item.place}</span>
-            </li>
-            <li>
-              Type : <span>{item.type}</span>
-            </li>
-            <li>
-              Client : <span>{item.client}</span>
-            </li>
-            <li>
-              Date : <span>{item.date}</span>
-            </li>
-            <li>
-              Surface : <span>{item.surface}</span>
-            </li>
-            <li>
-              Statut : <span>{item.statut}</span>
-            </li>
-          </ul>
-        </div>
-        <div className="photos-container">
-          {item.photos.map((photo, i) => (
-            <div className="photo-container" key={i}>
-              <div className="photo-content" onClick={(e) => displayImage(e)}>
-                <MdClose size={20} onClick={(e) => displayImage(e)} />
-                <img src={photo.src} alt={item.title} />
-              </div>
+    <div className="page realisation-page">
+      {item && (
+        <>
+          <div className="text-container">
+            <h1>{item.title}</h1>
+            <div className="photo-container">
+              <img
+                src={item.photos[item.photos.length - 1].src}
+                alt={item.title}
+              />
             </div>
-          ))}
-        </div>
-      </div>
-    )
+            <p>{item.description}</p>
+            <ul>
+              <li>
+                Lieu : <span>{item.place}</span>
+              </li>
+              <li>
+                Type : <span>{item.type}</span>
+              </li>
+              <li>
+                Client : <span>{item.client}</span>
+              </li>
+              <li>
+                Date : <span>{item.date}</span>
+              </li>
+              <li>
+                Surface : <span>{item.surface}</span>
+              </li>
+              <li>
+                Statut : <span>{item.statut}</span>
+              </li>
+            </ul>
+          </div>
+          <div className="photos-container">
+            {item.photos.map((photo, i) => (
+              <div className="photo-container" key={i}>
+                <div className="photo-content" onClick={(e) => displayImage(e)}>
+                  <MdClose size={20} onClick={(e) => displayImage(e)} />
+                  <img src={photo.src} alt={item.title} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
   );
 }
